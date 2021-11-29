@@ -5,7 +5,7 @@ package com.passager;
  * l'intérieur (assis, debout).
  *
  * Les instances de cette classe sont des objets constants.
- * @author: Dahbia BERRANI
+ * @author Dahbia BERRANI
  **/
 
 public class EtatPassager implements IEtatPassager {
