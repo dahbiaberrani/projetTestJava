@@ -6,14 +6,30 @@ public class Autobus {
 
     }
 
-    public boolean aPlaceAssise();
+    public boolean aPlaceAssise(){
 
-    public boolean aPlaceDebout();
+        return false;
+    }
 
-    public void demanderPlaceAssise(Passager p);
+    public boolean aPlaceDebout(){
 
-    public void demanderPlaceDebout(Passager p);
-    public void demanderChangerEnDebout(Passager p);
-    public void demanderChangerEnAssis(Passager p);
-    public void demanderSortie(Passager p);
+        return false;
+    }
+
+    public void demanderPlaceAssise(Passager p){
+
+    }
+
+    public void demanderPlaceDebout(Passager p){
+
+    }
+    public void demanderChangerEnDebout(Passager p){
+
+    }
+    public void demanderChangerEnAssis(Passager p){
+
+    }
+    public void demanderSortie(Passager p){
+
+    }
 }
