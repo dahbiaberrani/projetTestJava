@@ -1,6 +1,6 @@
 package tec;
 
-public class Autobus {
+public class Autobus implements Bus{
 
     public Autobus() {
 

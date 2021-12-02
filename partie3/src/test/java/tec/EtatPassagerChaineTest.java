@@ -1,4 +1,4 @@
-package passager;
+package tec;
 
 
 import org.junit.jupiter.api.AfterEach;
