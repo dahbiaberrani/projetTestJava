@@ -4,9 +4,10 @@ package passager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tec.EtatPassagerMonter;
 
-import static passager.EtatPassagerMonter.Etat.ASSIS;
-import static passager.EtatPassagerMonter.Etat.DEBOUT;
+import static tec.EtatPassagerMonter.Etat.ASSIS;
+import static tec.EtatPassagerMonter.Etat.DEBOUT;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

@@ -1,4 +1,4 @@
-package jauge;
+package tec;
 
 
 public interface Ijauge {

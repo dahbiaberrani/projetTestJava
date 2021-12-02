@@ -4,6 +4,7 @@ package passager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tec.EtatPassagerChaine;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

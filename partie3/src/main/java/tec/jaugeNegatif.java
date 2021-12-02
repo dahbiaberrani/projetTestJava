@@ -1,4 +1,4 @@
-package jauge;
+package tec;
 
 /**
  * Réalisation d'une Jauge avec des entiers naturels.
@@ -15,10 +15,8 @@ package jauge;
  * <li>bleu niveau inférieur à l'intervalle.
  * </ul>
  *
- * @author MUNOZ Matteo
- *
  */
-public class jaugeNaturel implements Ijauge{
+public class jaugeNegatif implements Ijauge{
     private long valeur;
     private final long min;
     private final long max;
@@ -31,10 +29,10 @@ public class jaugeNaturel implements Ijauge{
      * @param vigieMax valeur maximale de l'intervalle de vigie.
      * @param depart   valeur initiale de la jauge.
      */
-    public jaugeNaturel(long vigieMin, long vigieMax, long depart) {
-        valeur = depart;
-        min = vigieMin;
-        max = vigieMax;
+    public jaugeNegatif(long vigieMin, long vigieMax, long depart) {
+        valeur = -depart;
+        min = -vigieMin;
+        max = -vigieMax;
         /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
          * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
          */
@@ -48,7 +46,7 @@ public class jaugeNaturel implements Ijauge{
      *
      */
     public boolean estRouge() {
-        return valeur >= max;
+        return valeur <= max;
     }
 
     /**
@@ -58,7 +56,7 @@ public class jaugeNaturel implements Ijauge{
      *
      */
     public boolean estVert() {
-        return valeur > min && valeur < max;
+        return valeur < min && valeur > max;
     }
 
     /**
@@ -67,7 +65,7 @@ public class jaugeNaturel implements Ijauge{
      * @return vrai si niveau <= vigieMin.
      */
     public boolean estBleu() {
-        return  valeur <= min;
+        return  valeur >= min;
     }
 
     /**
@@ -75,7 +73,7 @@ public class jaugeNaturel implements Ijauge{
      * L'état peut devenir supérieur à vigieMax.
      */
     public void incrementer() {
-        valeur++;
+        valeur--;
     }
 
     /**
@@ -83,7 +81,7 @@ public class jaugeNaturel implements Ijauge{
      * L'état peut devenir inférieur à la vigieMin.
      */
     public void decrementer() {
-        valeur--;
+        valeur++;
     }
 
 

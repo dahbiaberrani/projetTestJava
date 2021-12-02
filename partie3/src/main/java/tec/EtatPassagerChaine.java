@@ -1,44 +1,33 @@
-package passager;
+package tec;
+
 /**
  * Cette classe représente l'état d'un passager dans un transport.
  * Il y a un état à l'exterieur du transport (dehors) et deux états à 
  * l'intérieur (assis, debout).
- *
+ *  
  * Les instances de cette classe sont des objets constants.
- * @author Dahbia BERRANI
  **/
+public class EtatPassagerChaine implements IEtatPassager {
+  private  String monEtat;
 
-public class EtatPassager implements IEtatPassager {
-  /**
-   * Définit les trois états possible d'un passager dans un transport.
-   */
-  public enum Etat {/** passager assis à l'intérieur */  ASSIS, 
-                    /** passager debout à l'intérieur */ DEBOUT,  
-                    /** passager à l'extérieur */        DEHORS};
-
-  private final Etat monEtat;
-
-  /**
-   * Construit une instance en précisant l'état du passager.
-   * 
-   * @param e  valeur de l'état.
-   */
-  public EtatPassager(Etat e) {
-    monEtat = e;
+  public EtatPassagerChaine(String e) {
+    this.monEtat = e;
 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
   }
 
+
+
+
   /**
    * Le passager est-il à l'extérieur du transport ?
    *
    * @return vrai si instanciation avec DEHORS;
    */
-  @Override
-  public boolean estExterieur()  {
-    return this.monEtat == Etat.DEHORS;
+  public boolean estExterieur() {
+    return this.monEtat == "DEHORS";
 
   }
 
@@ -48,7 +37,7 @@ public class EtatPassager implements IEtatPassager {
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-    return monEtat == Etat.ASSIS;
+    return this.monEtat == "ASSIS";
   }
 
   /**
@@ -57,7 +46,7 @@ public class EtatPassager implements IEtatPassager {
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-    return this.monEtat == Etat.DEBOUT;
+    return this.monEtat == "DEBOUT";
   }
 
   /**
@@ -66,7 +55,7 @@ public class EtatPassager implements IEtatPassager {
    * @return vrai si instanciation avec ASSIS ou DEBOUT.
    */
   public boolean estInterieur() {
-    return this.monEtat == Etat.ASSIS || this.monEtat == Etat.DEBOUT;
+    return this.monEtat == "DEBOUT" || this.monEtat == "ASSIS";
   }
 
 

@@ -1,28 +1,29 @@
-package passager;
-
+package tec;
 /**
  * Cette classe représente l'état d'un passager dans un transport.
  * Il y a un état à l'exterieur du transport (dehors) et deux états à 
  * l'intérieur (assis, debout).
- *  
+ *
  * Les instances de cette classe sont des objets constants.
+ * @author Dahbia BERRANI
  **/
-public class EtatPassagerMonter {
+
+public class EtatPassager implements IEtatPassager {
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
-  public enum Etat {/** passager assis à l'intérieur */  ASSIS,
-                    /** passager debout à l'intérieur */ DEBOUT,
-                    };
+  public enum Etat {/** passager assis à l'intérieur */  ASSIS, 
+                    /** passager debout à l'intérieur */ DEBOUT,  
+                    /** passager à l'extérieur */        DEHORS};
 
   private final Etat monEtat;
 
   /**
    * Construit une instance en précisant l'état du passager.
-   *
+   * 
    * @param e  valeur de l'état.
    */
-  public EtatPassagerMonter(Etat e) {
+  public EtatPassager(Etat e) {
     monEtat = e;
 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
@@ -30,8 +31,16 @@ public class EtatPassagerMonter {
      */
   }
 
+  /**
+   * Le passager est-il à l'extérieur du transport ?
+   *
+   * @return vrai si instanciation avec DEHORS;
+   */
+  @Override
+  public boolean estExterieur()  {
+    return this.monEtat == Etat.DEHORS;
 
-
+  }
 
   /**
    * Le passager est-il assis à l'intérieur du transport ?
@@ -60,15 +69,7 @@ public class EtatPassagerMonter {
     return this.monEtat == Etat.ASSIS || this.monEtat == Etat.DEBOUT;
   }
 
-  /**
-   * Le passager est-il à l'extérieur du transport ?
-   *
-   * @return vrai si instanciation avec DEHORS;
-   */
-  public boolean estExterieur() {
-    return false;
 
-  }
 
   /**
    * Cette méthode est heritée de la classe {@link Object}.

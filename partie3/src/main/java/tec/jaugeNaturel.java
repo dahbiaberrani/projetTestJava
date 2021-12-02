@@ -1,4 +1,4 @@
-package jauge;
+package tec;
 
 /**
  * Réalisation d'une Jauge avec des entiers naturels.
@@ -15,11 +15,13 @@ package jauge;
  * <li>bleu niveau inférieur à l'intervalle.
  * </ul>
  *
+ * @author MUNOZ Matteo
+ *
  */
-public class jaugeReel implements Ijauge{
-    private float valeur;
-    private final float min;
-    private final float max;
+public class jaugeNaturel implements Ijauge{
+    private long valeur;
+    private final long min;
+    private final long max;
 
     /**
      * Construit une instance en précisant la valeur de départ de la Jauge
@@ -29,10 +31,10 @@ public class jaugeReel implements Ijauge{
      * @param vigieMax valeur maximale de l'intervalle de vigie.
      * @param depart   valeur initiale de la jauge.
      */
-    public jaugeReel(float vigieMin, float vigieMax, float depart) {
-        valeur = depart/1000;
-        min = vigieMin/1000;
-        max = vigieMax/1000;
+    public jaugeNaturel(long vigieMin, long vigieMax, long depart) {
+        valeur = depart;
+        min = vigieMin;
+        max = vigieMax;
         /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
          * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
          */
@@ -73,7 +75,7 @@ public class jaugeReel implements Ijauge{
      * L'état peut devenir supérieur à vigieMax.
      */
     public void incrementer() {
-        valeur += 0.001;
+        valeur++;
     }
 
     /**
@@ -81,7 +83,7 @@ public class jaugeReel implements Ijauge{
      * L'état peut devenir inférieur à la vigieMin.
      */
     public void decrementer() {
-        valeur -= 0.001;
+        valeur--;
     }
 
 

@@ -1,6 +1,4 @@
-package passager;
-
-import static passager.EtatPassager.Etat.ASSIS;
+package tec;
 
 /**
  * Cette classe représente l'état d'un passager dans un transport.
@@ -9,11 +7,23 @@ import static passager.EtatPassager.Etat.ASSIS;
  *  
  * Les instances de cette classe sont des objets constants.
  **/
-public class EtatPassagerChaine implements IEtatPassager {
-  private  String monEtat;
+public class EtatPassagerMonter {
+  /**
+   * Définit les trois états possible d'un passager dans un transport.
+   */
+  public enum Etat {/** passager assis à l'intérieur */  ASSIS,
+                    /** passager debout à l'intérieur */ DEBOUT,
+                    };
 
-  public EtatPassagerChaine(String e) {
-    this.monEtat = e;
+  private final Etat monEtat;
+
+  /**
+   * Construit une instance en précisant l'état du passager.
+   *
+   * @param e  valeur de l'état.
+   */
+  public EtatPassagerMonter(Etat e) {
+    monEtat = e;
 
     /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
@@ -24,22 +34,12 @@ public class EtatPassagerChaine implements IEtatPassager {
 
 
   /**
-   * Le passager est-il à l'extérieur du transport ?
-   *
-   * @return vrai si instanciation avec DEHORS;
-   */
-  public boolean estExterieur() {
-    return this.monEtat == "DEHORS";
-
-  }
-
-  /**
    * Le passager est-il assis à l'intérieur du transport ?
    *
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-    return this.monEtat == "ASSIS";
+    return monEtat == Etat.ASSIS;
   }
 
   /**
@@ -48,7 +48,7 @@ public class EtatPassagerChaine implements IEtatPassager {
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-    return this.monEtat == "DEBOUT";
+    return this.monEtat == Etat.DEBOUT;
   }
 
   /**
@@ -57,10 +57,18 @@ public class EtatPassagerChaine implements IEtatPassager {
    * @return vrai si instanciation avec ASSIS ou DEBOUT.
    */
   public boolean estInterieur() {
-    return this.monEtat == "DEBOUT" || this.monEtat == "ASSIS";
+    return this.monEtat == Etat.ASSIS || this.monEtat == Etat.DEBOUT;
   }
 
+  /**
+   * Le passager est-il à l'extérieur du transport ?
+   *
+   * @return vrai si instanciation avec DEHORS;
+   */
+  public boolean estExterieur() {
+    return false;
 
+  }
 
   /**
    * Cette méthode est heritée de la classe {@link Object}.

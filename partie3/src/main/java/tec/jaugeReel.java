@@ -1,4 +1,4 @@
-package jauge;
+package tec;
 
 /**
  * Réalisation d'une Jauge avec des entiers naturels.
@@ -14,10 +14,12 @@ package jauge;
  * <li>rouge niveau supérieur à l'intervalle,
  * <li>bleu niveau inférieur à l'intervalle.
  * </ul>
+ *
  */
-public class jaugeDistance implements Ijauge{
-    private long distMin;
-    private long distMax;
+public class jaugeReel implements Ijauge{
+    private float valeur;
+    private final float min;
+    private final float max;
 
     /**
      * Construit une instance en précisant la valeur de départ de la Jauge
@@ -27,9 +29,10 @@ public class jaugeDistance implements Ijauge{
      * @param vigieMax valeur maximale de l'intervalle de vigie.
      * @param depart   valeur initiale de la jauge.
      */
-    public jaugeDistance(long vigieMin, long vigieMax, long depart) {
-        distMax = vigieMax - depart;
-        distMin = depart - vigieMin;
+    public jaugeReel(float vigieMin, float vigieMax, float depart) {
+        valeur = depart/1000;
+        min = vigieMin/1000;
+        max = vigieMax/1000;
         /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
          * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
          */
@@ -40,18 +43,20 @@ public class jaugeDistance implements Ijauge{
      * L'état de la jauge est-il rouge ?
      *
      * @return vrai si niveau >=  vigieMax.
+     *
      */
     public boolean estRouge() {
-        return distMax <= 0;
+        return valeur >= max;
     }
 
     /**
      * L'état de la jauge est-il vert ?
      *
      * @return vrai si niveau appartient à ]vigieMin, vigieMax[.
+     *
      */
     public boolean estVert() {
-        return distMin > 0 && distMax > 0;
+        return valeur > min && valeur < max;
     }
 
     /**
@@ -60,7 +65,7 @@ public class jaugeDistance implements Ijauge{
      * @return vrai si niveau <= vigieMin.
      */
     public boolean estBleu() {
-        return distMin <= 0;
+        return  valeur <= min;
     }
 
     /**
@@ -68,8 +73,7 @@ public class jaugeDistance implements Ijauge{
      * L'état peut devenir supérieur à vigieMax.
      */
     public void incrementer() {
-        distMax--;
-        distMin++;
+        valeur += 0.001;
     }
 
     /**
@@ -77,8 +81,7 @@ public class jaugeDistance implements Ijauge{
      * L'état peut devenir inférieur à la vigieMin.
      */
     public void decrementer() {
-        distMin--;
-        distMax++;
+        valeur -= 0.001;
     }
 
 
@@ -89,7 +92,7 @@ public class jaugeDistance implements Ijauge{
      * <p> Un code par défaut est définit dans
      * {@link Object#toString() la classe Object}
      * Il faut adapter (redéfinir) le code de cette méthode à chaque classe.
-     * <p>
+     *
      * Pour les chaînes de cararctères, l'opérateur + correspond a la concaténation.
      * Les valeurs numériques sont alors convertit en ascii.
      * Si l'état d'une instance de cette classe est min=-456, max=23,
@@ -97,6 +100,6 @@ public class jaugeDistance implements Ijauge{
      */
     @Override
     public String toString() {
-        return "<" + distMin + " [" + distMax + "," + distMin + "]>";
+        return "<" + valeur + " [" + min + "," + max + "]>";
     }
 }

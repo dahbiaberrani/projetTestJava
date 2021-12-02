@@ -1,4 +1,4 @@
-package passager;
+package tec;
 
 public interface IEtatPassager {
     boolean estExterieur();
