@@ -1,5 +1,7 @@
 package tec;
 
+import java.util.function.Supplier;
+
 /**
  * Cette interface définit un des types abstraits fixant les interactions
  * avec les passagers. 
