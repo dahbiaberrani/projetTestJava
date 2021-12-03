@@ -1,9 +1,6 @@
 package tec;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class AutobusTest {
 
@@ -13,6 +10,7 @@ class AutobusTest {
      * <p> A vérifier :
      * 	 <p>aPlaceAssise retourne false si il n' y a pas des place  assises dans autobus.
      * 	 <p>aPlaceAssise retourne vrai si il y a des place assises dans  autobus.
+     * 	 @author Dahbia BERRANI
      */
 
     @Test
@@ -47,7 +45,7 @@ class AutobusTest {
      */
 
     @Test
-    void demanderPlaceDebout() {
+    void demanderPlaceDebout(Passager p) {
 
     }
 
@@ -58,7 +56,7 @@ class AutobusTest {
      */
 
     @Test
-    void demanderChangerEnDebout() {
+    void demanderChangerEnDebout(Passager p) {
     }
 
     /**Avec une instanciation de passager
@@ -68,7 +66,7 @@ class AutobusTest {
      */
 
     @Test
-    void demanderChangerEnAssis() {
+    void demanderChangerEnAssis(Passager p) {
     }
 
     /**Avec une instanciation de passager

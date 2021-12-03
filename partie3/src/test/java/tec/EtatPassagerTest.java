@@ -1,14 +1,13 @@
 package tec;
 
-
+//import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tec.EtatPassager;
 
-import static tec.EtatPassager.Etat.*;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static tec.EtatPassager.Etat.*;
 
 class EtatPassagerTest {
     private EtatPassager passager1,passager2,passager3;

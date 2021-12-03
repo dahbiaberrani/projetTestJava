@@ -1,11 +1,10 @@
 package tec;
 
-import java.util.function.Supplier;
-
 /** class Autobus iplement l'interface Bus
  * un autobus a un nombre déterminer de place assises et debouts et sont fixer à l'instanciation d'un autobus
+ * @author Dahbia BERRANI
  */
-public class Autobus implements Bus{
+public class Autobus implements Bus, Transport{
     private int numeroArret;
     private Passager listePassager [];
     private jaugeNaturel nbPlaceDebout;
@@ -83,6 +82,11 @@ public class Autobus implements Bus{
      */
 
     public void demanderSortie(Passager p){
+
+    }
+
+    @Override
+    public void allerArretSuivant() throws UsagerInvalideException {
 
     }
 }
