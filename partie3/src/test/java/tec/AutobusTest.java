@@ -79,4 +79,14 @@ class AutobusTest {
     @Test
     void demanderSortie() {
     }
+
+    /**Avec une instanciation de autobus
+     * <p> A vérifier:
+     * <p>retourne vrai si est bien partie en arret suivant.
+     */
+
+    @Test
+    void allerArretSuivant(){
+
+    }
 }

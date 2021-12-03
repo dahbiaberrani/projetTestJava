@@ -7,11 +7,11 @@
  * La classe (ou l'interface) peut etre designee simplement par son nom 
  * (ici Usager).
  */
-import tec.Usager;
-import tec.Transport;
-import tec.UsagerInvalideException;
-//import tec.PassagerStandard;
+
 import tec.Autobus;
+import tec.Transport;
+import tec.Usager;
+import tec.UsagerInvalideException;
 
 /*
  * Exemple de programme principale avec trois PassagerStandard et un Autobus.
@@ -70,9 +70,9 @@ class Simple {
     serenity.allerArretSuivant();
     // debogue
     System.out.println(serenity);
-    System.out.println(kaylee);
-    System.out.println(jayne);
-    System.out.println(inara);
+//    System.out.println(kaylee);
+//    System.out.println(jayne);
+//    System.out.println(inara);
   }
 }
 
