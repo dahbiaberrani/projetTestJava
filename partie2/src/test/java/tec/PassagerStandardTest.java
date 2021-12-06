@@ -16,6 +16,7 @@ class PassagerStandardTest {
 
     @BeforeEach
     void setUp() {
+        Passager p = new PassagerStandard("Nathalie", 0);
     }
 
     @AfterEach
