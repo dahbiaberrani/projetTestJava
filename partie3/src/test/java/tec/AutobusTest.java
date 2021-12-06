@@ -1,9 +1,22 @@
 package tec;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class AutobusTest {
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
+class AutobusTest {
+    Autobus autobus,autobus1;
+    Passager passager,passager1;
+
+    @BeforeEach
+    void setUp() {
+        autobus = new Autobus(5,0);
+        autobus1 = new Autobus(0,8);
+        passager.accepterPlaceAssise();
+
+    }
 
     /**
      * Avec une instanciation dans autobus:
@@ -15,6 +28,8 @@ class AutobusTest {
 
     @Test
     void aPlaceAssise() {
+        assertTrue("true parceque il y a des place assise",autobus1.aPlaceAssise());
+        assertFalse("false parce que il n' y a pas des place assise",autobus.aPlaceAssise());
 
     }
 
@@ -27,6 +42,8 @@ class AutobusTest {
 
     @Test
     void aPlaceDebout() {
+        assertTrue("y ' pas des place debout",autobus.aPlaceDebout());
+        assertFalse("y 'a des place debout",autobus1.aPlaceDebout());
     }
 
     /**Avec une instanciation de passager
@@ -36,7 +53,7 @@ class AutobusTest {
 
     @Test
     void demanderPlaceAssise(Passager p) {
-
+        assertTrue("",demanderPlaceAssise(passager));
     }
 
     /**Avec une instanciation de passager

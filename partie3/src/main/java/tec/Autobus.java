@@ -1,20 +1,22 @@
 package tec;
 
+import java.util.ArrayList;
+
 /** class Autobus iplement l'interface Bus
  * un autobus a un nombre déterminer de place assises et debouts et sont fixer à l'instanciation d'un autobus
  * @author Dahbia BERRANI
  */
 
-public class Autobus implements Bus, Transport{
+public class Autobus<PassagerAbstract> implements Bus, Transport{
     /** on declare 3 attributs de la classe autobus:
      * listePassager: lorsque en appel la methode monterDans() en ajoute ce passager à cette liste.
      *nbPlaceDebout: est declarer à la creation de Autobus
      * nbPlaceAssises: est declarer à la creation de Autobus
      */
-    private int numeroArret;
-    private Passager listePassager [];
+    private ArrayList<Passager> mesPassagers;
     private jaugeNaturel nbPlaceDebout;
     private jaugeNaturel nbPlaceAssises;
+    private int numeroArret;
 
     public Autobus(int nbPlaceDebout, int nbPlaceAssises) {
     }
@@ -46,15 +48,22 @@ public class Autobus implements Bus, Transport{
      */
 
     public void demanderPlaceAssise(Passager p){
+//        this.mesPassagers.add(p);
+//        this.nbPlaceAssises.incrementer();
     }
 
     /**
-     * Change un passager d'une place assise vers une place debout.
+     * Le passager entre dans ce bus en demandant une place debout.
+     * L'état du passager est forcément dehors.
+     * Cette méthode est appelée par passager.
      * Elle change l'état du passager.
-     * @param p le passager avec un état assis.
+     * @param p le passager
      */
 
     public void demanderPlaceDebout(Passager p){
+//        this.mesPassagers.add(p);
+//        this.nbPlaceDebout.incrementer();
+
     }
 
     /**
@@ -64,6 +73,8 @@ public class Autobus implements Bus, Transport{
      */
 
     public void demanderChangerEnDebout(Passager p){
+//        this.nbPlaceDebout.incrementer();
+//        this.nbPlaceAssises.decrementer();
     }
 
     /**
@@ -73,6 +84,8 @@ public class Autobus implements Bus, Transport{
      */
 
     public void demanderChangerEnAssis(Passager p){
+//        this.nbPlaceAssises.incrementer();
+//        this.nbPlaceDebout.decrementer();
     }
 
     /**
@@ -92,5 +105,10 @@ public class Autobus implements Bus, Transport{
 
     @Override
     public void allerArretSuivant() throws UsagerInvalideException {
+    }
+
+    @Override
+    public String toString() {
+        return "[ arret:" + this.numeroArret + ", assis:" + this.nbPlaceAssises + ", debout:" + this.nbPlaceDebout + "]";
     }
 }
