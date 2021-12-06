@@ -100,7 +100,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     /**
      * Indique au tranport de simuler l'arrêt suivant.
      *
-     * @throws si l'état du l'usager est incohérent par rapport à sa demande.
+     * @throws UsagerInvalideException si l'état de l'usager est incohérent par rapport à sa demande.
      */
 
     @Override
