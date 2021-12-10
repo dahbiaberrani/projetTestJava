@@ -19,45 +19,49 @@ public class PassagerStandard implements Usager, Passager {
 
     @Override
     public boolean estDehors() {
-        return false;
+        return etat.estExterieur();
     }
 
     @Override
     public boolean estAssis() {
-        return false;
+        return etat.estAssis();
     }
 
     @Override
     public boolean estDebout() {
-        return false;
+        return etat.estDebout();
     }
 
     @Override
     public void accepterSortie() {
+        etat.setEtat(EtatPassager.Etat.DEHORS);
     }
 
     @Override
     public void accepterPlaceAssise() {
-
+        etat.setEtat(EtatPassager.Etat.ASSIS);
     }
 
     @Override
     public void accepterPlaceDebout() {
-
+        etat.setEtat(EtatPassager.Etat.DEBOUT);
     }
 
     @Override
     public void nouvelArret(Bus bus, int numeroArret) {
-
+        if (numeroArret == destination) {
+            bus.demanderSortie(this);
+        }
     }
 
     @Override
     public String nom() {
-        return null;
+        return nom;
     }
 
     @Override
     public void monterDans(Transport t) throws UsagerInvalideException {
+
 
     }
 

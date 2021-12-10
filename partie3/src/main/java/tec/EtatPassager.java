@@ -9,6 +9,10 @@ package tec;
  **/
 
 public class EtatPassager implements IEtatPassager {
+  public void setEtat(Etat e) {
+    monEtat = e;
+  }
+
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
@@ -16,7 +20,7 @@ public class EtatPassager implements IEtatPassager {
                     /** passager debout à l'intérieur */ DEBOUT,  
                     /** passager à l'extérieur */        DEHORS};
 
-  private final Etat monEtat;
+  private Etat monEtat;
 
   /**
    * Construit une instance en précisant l'état du passager.
@@ -30,6 +34,7 @@ public class EtatPassager implements IEtatPassager {
      * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
      */
   }
+
 
   /**
    * Le passager est-il à l'extérieur du transport ?
