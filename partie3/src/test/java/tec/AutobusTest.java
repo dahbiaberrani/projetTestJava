@@ -14,7 +14,8 @@ class AutobusTest {
     void setUp() {
         autobus = new Autobus(5,0);
         autobus1 = new Autobus(0,8);
-        passager.accepterPlaceAssise();
+        passager = null;
+        passager1 = null;
 
     }
 
@@ -52,8 +53,8 @@ class AutobusTest {
      */
 
     @Test
-    void demanderPlaceAssise(Passager p) {
-        assertTrue("",demanderPlaceAssise(passager));
+    void demanderPlaceAssise(Passager passager1) {
+        assertTrue("",demanderPlaceAssise(passager1));
     }
 
     /**Avec une instanciation de passager
