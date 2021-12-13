@@ -20,12 +20,14 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     private jaugeNaturel nbPlaceAssises;
     private int numeroArret;
     private List<Passager> passagers;
+    private List<Passager> passagersASuprimmer;
 
     public Autobus(int nAssises ,  int nDebout ) {
         this.nbPlaceDebout = new jaugeNaturel(0,nDebout, 0);
         this.nbPlaceAssises = new jaugeNaturel(0,nAssises, 0);
         this.numeroArret = 0;
         this.passagers = new ArrayList<Passager>();
+        this.passagersASuprimmer = new ArrayList<Passager>();
 
     }
 
@@ -122,7 +124,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
             this.nbPlaceDebout.decrementer();
         }
         p.accepterSortie();
-        this.passagers.remove(p);
+        passagersASuprimmer.add(p);
     }
 
     /**
@@ -134,10 +136,15 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     @Override
     public void allerArretSuivant() throws UsagerInvalideException {
         this.numeroArret++;
-//        for (Passager i : passagers) {
-        for (int i = 0; i < passagers.size(); i++) {
-            this.passagers.get(i).nouvelArret(this, numeroArret);
+        for (Passager p : passagers) {
+            p.nouvelArret(this, numeroArret);
         }
+
+        for (Passager p : passagersASuprimmer) {
+            this.passagers.remove(p);
+        }
+
+        this.passagersASuprimmer.clear();
     }
 
     @Override

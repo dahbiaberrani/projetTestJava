@@ -98,7 +98,7 @@ class PassagerStandardTest {
         PassagerStandard p1 = new PassagerStandard("Josephine", 3);
         p1.monterDans(f);
         p1.accepterPlaceAssise();
-        assertFalse(p1.estDehors());
+        assertTrue(p1.estAssis());
 
         p1.nouvelArret(f,2);
         assertFalse(p1.estDebout());
@@ -106,6 +106,7 @@ class PassagerStandardTest {
 
 
         p1.nouvelArret(f,3);
+        p1.accepterSortie();
         assertTrue(p1.estDehors());
     }
 
