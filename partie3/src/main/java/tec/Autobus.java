@@ -1,6 +1,7 @@
 package tec;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** class Autobus iplement l'interface Bus
  * un autobus a un nombre déterminer de place assises et debouts et sont fixer à l'instanciation d'un autobus
@@ -8,21 +9,25 @@ import java.util.ArrayList;
  */
 
 public class Autobus<PassagerAbstract> implements Bus, Transport{
+
     /** on declare 3 attributs de la classe autobus:
      * listePassager: lorsque en appel la methode monterDans() en ajoute ce passager à cette liste.
      *nbPlaceDebout: est declarer à la creation de Autobus
      * nbPlaceAssises: est declarer à la creation de Autobus
      */
-    private ArrayList<Passager> mesPassagers;
+
     private jaugeNaturel nbPlaceDebout;
     private jaugeNaturel nbPlaceAssises;
     private int numeroArret;
+    private List<Passager> passagers;
+    private int nbMaxDebout;
+    private int nbMaxAssise;
 
     public Autobus(int nAssises ,  int nDebout ) {
-        this.nbPlaceDebout = new jaugeNaturel(0,nDebout,nDebout);
-        this.nbPlaceAssises = new jaugeNaturel(0,nAssises,nAssises);
+        this.nbPlaceDebout = new jaugeNaturel(0,nDebout, nbMaxDebout);
+        this.nbPlaceAssises = new jaugeNaturel(0,nAssises, nbMaxAssise);
         this.numeroArret = 0;
-        this.mesPassagers = new ArrayList<Passager>();
+        this.passagers = new ArrayList<Passager>();
 
     }
 
@@ -32,7 +37,8 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public boolean aPlaceAssise(){
-        return this.nbPlaceAssises.estVert();
+
+        return !this.nbPlaceAssises.estRouge();
     }
 
     /**
@@ -41,8 +47,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public boolean aPlaceDebout(){
-
-        return this.nbPlaceDebout.estVert();
+        return !this.nbPlaceDebout.estRouge();
     }
 
     /**
@@ -54,9 +59,11 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderPlaceAssise(Passager p){
-        this.nbPlaceAssises.incrementer();
-        p.accepterPlaceAssise();
-        this.mesPassagers.add(p);
+        if (aPlaceAssise() && p.estDehors()) {
+            this.nbMaxAssise++;
+            p.accepterPlaceAssise();
+            this.passagers.add(p);
+        }
     }
 
     /**
@@ -68,10 +75,11 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderPlaceDebout(Passager p){
-        this.mesPassagers.add(p);
-        this.nbPlaceDebout.incrementer();
-        p.accepterPlaceDebout();
-
+        if(p.estDehors() && this.aPlaceDebout()) {
+            this.passagers.add(p);
+            this.nbMaxDebout++;
+            p.accepterPlaceDebout();
+        }
     }
 
     /**
@@ -81,8 +89,8 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnDebout(Passager p){
-        this.nbPlaceDebout.incrementer();
-        this.nbPlaceAssises.decrementer();
+        this.nbMaxDebout--;
+        this.nbMaxAssise++;
         p.accepterPlaceDebout();
     }
 
@@ -93,8 +101,8 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnAssis(Passager p){
-        this.nbPlaceAssises.incrementer();
-        this.nbPlaceDebout.decrementer();
+        this.nbMaxAssise--;
+        this.nbMaxDebout++;
         p.accepterPlaceAssise();
     }
 
@@ -105,29 +113,32 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderSortie(Passager p){
-        p.accepterSortie();
-        this.mesPassagers.remove(p);
         if (p.estAssis()) {
-            this.nbPlaceAssises.decrementer();
+            this.nbMaxAssise++;
         }
         if (p.estDebout()) {
-            this.nbPlaceDebout.decrementer();
+            this.nbMaxDebout++;
         }
+        p.accepterSortie();
+        this.passagers.remove(p);
     }
 
     /**
      * Indique au tranport de simuler l'arrêt suivant.
      *
-     * @throws si l'état du l'usager est incohérent par rapport à sa demande.
+     * @throws  si l'état du l'usager est incohérent par rapport à sa demande.
      */
 
     @Override
     public void allerArretSuivant() throws UsagerInvalideException {
-        this.numeroArret = numeroArret+1;
+        this.numeroArret++;
+        for (Passager i : passagers) {
+            i.nouvelArret(this, numeroArret);
+        }
     }
 
     @Override
     public String toString() {
-        return "[ arret:" + this.numeroArret + ", assis:" + this.nbPlaceAssises + ", debout:" + this.nbPlaceDebout + "]";
+        return "[ arret:" + this.numeroArret + ", assis:" + this.nbMaxAssise+ ", debout:" + this.nbMaxDebout + "]";
     }
 }

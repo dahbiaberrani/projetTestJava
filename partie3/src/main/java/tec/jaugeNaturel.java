@@ -58,7 +58,7 @@ public class jaugeNaturel implements Ijauge{
      *
      */
     public boolean estVert() {
-        return valeur > min && valeur <= max;
+        return valeur > min && valeur < max;
     }
 
     /**
@@ -102,6 +102,6 @@ public class jaugeNaturel implements Ijauge{
      */
     @Override
     public String toString() {
-        return "<" + valeur + " [" + min + "," + max + "]>";
+        return "" + this.valeur;
     }
 }

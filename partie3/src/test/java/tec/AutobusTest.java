@@ -17,13 +17,12 @@ class AutobusTest {
     FauxPassager p3;
     @BeforeEach
     void setUp() throws Exception {
-        this.a1=new Autobus(5,5);
-        this.a2=new Autobus(5,0);
-        this.a3=new Autobus(0,5);
+        this.a1= new Autobus(5,5);
+        this.a2= new Autobus(5,0);
+        this.a3= new Autobus(0,5);
         p1=new FauxPassager();
         p2=new FauxPassager();
         p3=new FauxPassager();
-
 
     }
 
