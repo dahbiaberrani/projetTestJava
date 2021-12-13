@@ -13,6 +13,7 @@ class EtatPassagerChaineTest {
     private EtatPassagerChaine passager4, passager5, passager6;
     @BeforeEach
     void setUp() {
+
         passager4 = new EtatPassagerChaine("DEHORS");
         passager5 = new EtatPassagerChaine("ASSIS");
         passager6 = new EtatPassagerChaine("DEBOUT");
@@ -23,7 +24,7 @@ class EtatPassagerChaineTest {
     }
 
     @Test
-    void estExterieur() {
+    void EstExterieur() {
 
         assertTrue(passager4.estExterieur());
         assertFalse(passager4.estAssis());

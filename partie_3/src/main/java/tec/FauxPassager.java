@@ -33,6 +33,7 @@ class FauxPassager implements Passager {
   }
 
   public void accepterPlaceDebout() {
+
     message = ":accepterPlaceDebout:";
   }
 

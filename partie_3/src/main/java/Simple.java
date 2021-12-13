@@ -3,15 +3,12 @@
 
 /*
  * L'instruction import evite de specifier a chaque fois le nom
- * complet de la classe (par exemple tec.Usager). 
- * La classe (ou l'interface) peut etre designee simplement par son nom 
+ * complet de la classe (par exemple tec.Usager).
+ * La classe (ou l'interface) peut etre designee simplement par son nom
  * (ici Usager).
  */
 
-import tec.Autobus;
-import tec.Transport;
-import tec.Usager;
-import tec.UsagerInvalideException;
+import tec.*;
 
 /*
  * Exemple de programme principale avec trois PassagerStandard et un Autobus.
@@ -33,46 +30,46 @@ class Simple {
   static public void main (String[] args) throws UsagerInvalideException {
     Transport serenity = new Autobus(1, 2);
 
-//    Usager kaylee = new PassagerStandard("Kaylee", 5);
+    Usager kaylee = new PassagerStandard("Kaylee", 5);
 
     serenity.allerArretSuivant();
     // debogue
     System.out.println(serenity);
 
-//    kaylee.monterDans(serenity);
+    kaylee.monterDans(serenity);
 
-//    Usager jayne = new PassagerStandard("Jayne", 4);
-//    jayne.monterDans(serenity);
-
-    serenity.allerArretSuivant();
-    // debogue
-    System.out.println(serenity);
-//    System.out.println(kaylee);
-//    System.out.println(jayne);
-
-//    Usager inara = new PassagerStandard("Inara", 5);
-//    inara.monterDans(serenity);
+    Usager jayne = new PassagerStandard("Jayne", 4);
+    jayne.monterDans(serenity);
 
     serenity.allerArretSuivant();
     // debogue
     System.out.println(serenity);
-//    System.out.println(kaylee);
-//    System.out.println(jayne);
-//    System.out.println(inara);
+    System.out.println(kaylee);
+    System.out.println(jayne);
+
+    Usager inara = new PassagerStandard("Inara", 5);
+    inara.monterDans(serenity);
 
     serenity.allerArretSuivant();
     // debogue
     System.out.println(serenity);
-//    System.out.println(kaylee);
-//    System.out.println(jayne);
-//    System.out.println(inara);
+    System.out.println(kaylee);
+    System.out.println(jayne);
+    System.out.println(inara);
 
     serenity.allerArretSuivant();
     // debogue
     System.out.println(serenity);
-//    System.out.println(kaylee);
-//    System.out.println(jayne);
-//    System.out.println(inara);
+    System.out.println(kaylee);
+    System.out.println(jayne);
+    System.out.println(inara);
+
+    serenity.allerArretSuivant();
+    // debogue
+    System.out.println(serenity);
+    System.out.println(kaylee);
+    System.out.println(jayne);
+    System.out.println(inara);
   }
 }
 
