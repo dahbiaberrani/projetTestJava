@@ -18,7 +18,12 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     private jaugeNaturel nbPlaceAssises;
     private int numeroArret;
 
-    public Autobus(int nbPlaceDebout, int nbPlaceAssises) {
+    public Autobus(int nAssises ,  int nDebout ) {
+        this.nbPlaceDebout = new jaugeNaturel(0,nDebout,nDebout);
+        this.nbPlaceAssises = new jaugeNaturel(0,nAssises,nAssises);
+        this.numeroArret = 0;
+        this.mesPassagers = new ArrayList<Passager>();
+
     }
 
     /**
@@ -27,7 +32,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public boolean aPlaceAssise(){
-        return false;
+        return this.nbPlaceAssises.estVert();
     }
 
     /**
@@ -36,7 +41,8 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public boolean aPlaceDebout(){
-        return false;
+
+        return this.nbPlaceDebout.estVert();
     }
 
     /**
@@ -48,8 +54,9 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderPlaceAssise(Passager p){
-//        this.mesPassagers.add(p);
-//        this.nbPlaceAssises.incrementer();
+        this.nbPlaceAssises.incrementer();
+        p.accepterPlaceAssise();
+        this.mesPassagers.add(p);
     }
 
     /**
@@ -61,8 +68,9 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderPlaceDebout(Passager p){
-//        this.mesPassagers.add(p);
-//        this.nbPlaceDebout.incrementer();
+        this.mesPassagers.add(p);
+        this.nbPlaceDebout.incrementer();
+        p.accepterPlaceDebout();
 
     }
 
@@ -73,8 +81,9 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnDebout(Passager p){
-//        this.nbPlaceDebout.incrementer();
-//        this.nbPlaceAssises.decrementer();
+        this.nbPlaceDebout.incrementer();
+        this.nbPlaceAssises.decrementer();
+        p.accepterPlaceDebout();
     }
 
     /**
@@ -84,8 +93,9 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnAssis(Passager p){
-//        this.nbPlaceAssises.incrementer();
-//        this.nbPlaceDebout.decrementer();
+        this.nbPlaceAssises.incrementer();
+        this.nbPlaceDebout.decrementer();
+        p.accepterPlaceAssise();
     }
 
     /**
@@ -95,6 +105,14 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderSortie(Passager p){
+        p.accepterSortie();
+        this.mesPassagers.remove(p);
+        if (p.estAssis()) {
+            this.nbPlaceAssises.decrementer();
+        }
+        if (p.estDebout()) {
+            this.nbPlaceDebout.decrementer();
+        }
     }
 
     /**

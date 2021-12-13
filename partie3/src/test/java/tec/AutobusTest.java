@@ -3,19 +3,27 @@ package tec;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static tec.FauxPassager.ASSIS;
+import static tec.FauxPassager.DEBOUT;
+
 
 class AutobusTest {
-    Autobus autobus,autobus1;
-    Passager passager,passager1;
-
+    Autobus a1;
+    Autobus a2;
+    Autobus a3;
+    FauxPassager p1;
+    FauxPassager p2;
+    FauxPassager p3;
     @BeforeEach
-    void setUp() {
-        autobus = new Autobus(5,0);
-        autobus1 = new Autobus(0,8);
-        passager = null;
-        passager1 = null;
+    void setUp() throws Exception {
+        this.a1=new Autobus(5,5);
+        this.a2=new Autobus(5,0);
+        this.a3=new Autobus(0,5);
+        p1=new FauxPassager();
+        p2=new FauxPassager();
+        p3=new FauxPassager();
+
 
     }
 
@@ -29,9 +37,9 @@ class AutobusTest {
 
     @Test
     void aPlaceAssise() {
-        assertTrue("true parceque il y a des place assise",autobus1.aPlaceAssise());
-        assertFalse("false parce que il n' y a pas des place assise",autobus.aPlaceAssise());
-
+        assertTrue(a1.aPlaceAssise());
+        assertTrue(a2.aPlaceAssise());
+        assertFalse(a3.aPlaceAssise());
     }
 
     /**
@@ -42,9 +50,10 @@ class AutobusTest {
      */
 
     @Test
-    void aPlaceDebout() {
-        assertTrue("y ' pas des place debout",autobus.aPlaceDebout());
-        assertFalse("y 'a des place debout",autobus1.aPlaceDebout());
+    void testaPlaceDebout() {
+        assertTrue(a1.aPlaceDebout());
+        assertFalse(a2.aPlaceDebout());
+        assertTrue(a3.aPlaceDebout());
     }
 
     /**Avec une instanciation de passager
@@ -53,8 +62,17 @@ class AutobusTest {
      */
 
     @Test
-    void demanderPlaceAssise(Passager passager1) {
-        assertTrue("",demanderPlaceAssise(passager1));
+    void testdDemanderPlaceAssise() {
+        a1.demanderPlaceAssise(p1);
+        p1.status = ASSIS;
+        a2.demanderPlaceAssise(p2);
+        p2.status = ASSIS;
+        a3.demanderPlaceAssise(p3);
+        p3.status = ASSIS;
+
+        assertTrue(p1.estAssis());
+        assertTrue(p2.estAssis());
+        assertTrue(p3.estAssis());
     }
 
     /**Avec une instanciation de passager
@@ -63,8 +81,16 @@ class AutobusTest {
      */
 
     @Test
-    void demanderPlaceDebout(Passager p) {
-
+    void demanderPlaceDebout() {
+        a1.demanderPlaceDebout(p1);
+        p1.status = DEBOUT;
+        a2.demanderPlaceDebout(p2);
+        p2.status = DEBOUT;
+        a3.demanderPlaceDebout(p3);
+        p3.status = DEBOUT;
+        assertTrue(p1.estDebout());
+        assertTrue(p2.estDebout());
+        assertTrue(p3.estDebout());
     }
 
     /**Avec une instanciation de passager
@@ -74,7 +100,19 @@ class AutobusTest {
      */
 
     @Test
-    void demanderChangerEnDebout(Passager p) {
+    void demanderChangerEnDebout() {
+        a1.demanderChangerEnDebout(p1);
+        p1.status = DEBOUT;
+
+        assertTrue(p1.estDebout());
+        a2.demanderChangerEnDebout(p2);
+        p2.status = DEBOUT;
+
+        assertTrue(p2.estDebout());
+        a3.demanderChangerEnDebout(p3);
+        p3.status = DEBOUT;
+
+        assertTrue(p3.estDebout());
     }
 
     /**Avec une instanciation de passager
@@ -84,7 +122,17 @@ class AutobusTest {
      */
 
     @Test
-    void demanderChangerEnAssis(Passager p) {
+    void demanderChangerEnAssis() {
+        a1.demanderChangerEnAssis(p1);
+        p1.status = ASSIS;
+
+        assert(p1.estAssis());
+        a2.demanderChangerEnAssis(p2);
+        p2.status = ASSIS;
+        assert(p2.estAssis());
+        a3.demanderChangerEnAssis(p3);
+        p3.status = ASSIS;
+        assert(p3.estAssis());
     }
 
     /**Avec une instanciation de passager
@@ -96,6 +144,12 @@ class AutobusTest {
 
     @Test
     void demanderSortie() {
+        a1.demanderSortie(p1);
+        assertTrue(p1.estDehors());
+        a2.demanderSortie(p2);
+        assertTrue(p2.estDehors());
+        a3.demanderSortie(p3);
+        assertTrue(p3.estDehors());
     }
 
     /**Avec une instanciation de autobus

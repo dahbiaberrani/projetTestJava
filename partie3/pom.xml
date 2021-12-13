@@ -20,12 +20,15 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+<<<<<<< HEAD:partie3/pom.xml
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>4.1.0</version>
             <scope>test</scope>
         </dependency>
+=======
+>>>>>>> 2bc68d6d34a96c00b19b4b83473d14f226efa929:partie_3/pom.xml
     </dependencies>
 
     <properties>

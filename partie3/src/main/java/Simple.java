@@ -3,8 +3,8 @@
 
 /*
  * L'instruction import evite de specifier a chaque fois le nom
- * complet de la classe (par exemple tec.Usager). 
- * La classe (ou l'interface) peut etre designee simplement par son nom 
+ * complet de la classe (par exemple tec.Usager).
+ * La classe (ou l'interface) peut etre designee simplement par son nom
  * (ici Usager).
  */
 

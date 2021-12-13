@@ -58,7 +58,7 @@ public class jaugeNaturel implements Ijauge{
      *
      */
     public boolean estVert() {
-        return valeur > min && valeur < max;
+        return valeur > min && valeur <= max;
     }
 
     /**
