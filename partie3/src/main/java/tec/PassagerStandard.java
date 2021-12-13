@@ -50,12 +50,7 @@ public class PassagerStandard implements Usager, Passager {
     @Override
     public void nouvelArret(Bus bus, int numeroArret) {
         if (numeroArret == this.destination) {
-            bus.demanderChangerEnDebout(this);
-//            bus.demanderSortie(this);
-        }
-        if (this.estAssis()) {
-            bus.demanderPlaceDebout(this);
-//            bus.demanderSortie(this);
+            bus.demanderSortie(this);
         }
     }
 
@@ -67,7 +62,13 @@ public class PassagerStandard implements Usager, Passager {
     @Override
     public void monterDans(Transport t) throws UsagerInvalideException {
         if (t instanceof Bus bus) {
-            bus.demanderPlaceAssise(this);
+            if (bus.aPlaceAssise()) {
+                bus.demanderPlaceAssise(this);
+            } else {
+                if (bus.aPlaceDebout()) {
+                    bus.demanderPlaceDebout(this);
+                }
+            }
         } else {
             throw new UsagerInvalideException("Le passager n'est pas dans un bus");
         }

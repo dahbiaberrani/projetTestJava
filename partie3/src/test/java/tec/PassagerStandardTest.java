@@ -106,7 +106,6 @@ class PassagerStandardTest {
 
 
         p1.nouvelArret(f,3);
-        assertTrue(p1.estDebout());
         assertTrue(p1.estDehors());
     }
 

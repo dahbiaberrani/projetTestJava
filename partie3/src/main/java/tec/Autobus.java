@@ -20,12 +20,10 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     private jaugeNaturel nbPlaceAssises;
     private int numeroArret;
     private List<Passager> passagers;
-    private int nbMaxDebout;
-    private int nbMaxAssise;
 
     public Autobus(int nAssises ,  int nDebout ) {
-        this.nbPlaceDebout = new jaugeNaturel(0,nDebout, nbMaxDebout);
-        this.nbPlaceAssises = new jaugeNaturel(0,nAssises, nbMaxAssise);
+        this.nbPlaceDebout = new jaugeNaturel(0,nDebout, 0);
+        this.nbPlaceAssises = new jaugeNaturel(0,nAssises, 0);
         this.numeroArret = 0;
         this.passagers = new ArrayList<Passager>();
 
@@ -60,7 +58,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
 
     public void demanderPlaceAssise(Passager p){
         if (aPlaceAssise() && p.estDehors()) {
-            this.nbMaxAssise++;
+            this.nbPlaceAssises.incrementer();
             p.accepterPlaceAssise();
             this.passagers.add(p);
         }
@@ -77,7 +75,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     public void demanderPlaceDebout(Passager p){
         if(p.estDehors() && this.aPlaceDebout()) {
             this.passagers.add(p);
-            this.nbMaxDebout++;
+            this.nbPlaceDebout.incrementer();
             p.accepterPlaceDebout();
         }
     }
@@ -89,9 +87,11 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnDebout(Passager p){
-        this.nbMaxDebout--;
-        this.nbMaxAssise++;
-        p.accepterPlaceDebout();
+        if (p.estAssis() && this.aPlaceDebout()) {
+            this.nbPlaceAssises.decrementer();
+            this.nbPlaceDebout.incrementer();
+            p.accepterPlaceDebout();
+        }
     }
 
     /**
@@ -101,9 +101,11 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnAssis(Passager p){
-        this.nbMaxAssise--;
-        this.nbMaxDebout++;
-        p.accepterPlaceAssise();
+        if (p.estDebout() && this.aPlaceAssise()) {
+            this.nbPlaceAssises.decrementer();
+            this.nbPlaceDebout.incrementer();
+            p.accepterPlaceAssise();
+        }
     }
 
     /**
@@ -114,10 +116,10 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
 
     public void demanderSortie(Passager p){
         if (p.estAssis()) {
-            this.nbMaxAssise++;
+            this.nbPlaceAssises.decrementer();
         }
         if (p.estDebout()) {
-            this.nbMaxDebout++;
+            this.nbPlaceDebout.decrementer();
         }
         p.accepterSortie();
         this.passagers.remove(p);
@@ -132,13 +134,14 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     @Override
     public void allerArretSuivant() throws UsagerInvalideException {
         this.numeroArret++;
-        for (Passager i : passagers) {
-            i.nouvelArret(this, numeroArret);
+//        for (Passager i : passagers) {
+        for (int i = 0; i < passagers.size(); i++) {
+            this.passagers.get(i).nouvelArret(this, numeroArret);
         }
     }
 
     @Override
     public String toString() {
-        return "[ arret:" + this.numeroArret + ", assis:" + this.nbMaxAssise+ ", debout:" + this.nbMaxDebout + "]";
+        return ("[ arret:" + this.numeroArret + ", assis:" + this.nbPlaceAssises.toString() + ", debout:" + this.nbPlaceDebout.toString() + "]");
     }
 }
