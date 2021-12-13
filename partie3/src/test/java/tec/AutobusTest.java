@@ -160,5 +160,6 @@ class AutobusTest {
     void allerArretSuivant(){
         p1.nouvelArret(a1,1);
         p1.accepterSortie();
+        assertTrue(p1.estDehors());
     }
 }
