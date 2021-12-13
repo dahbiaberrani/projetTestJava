@@ -3,11 +3,11 @@ package tec;
 public class FauxBusVide {
   String message = "???";
 
-  boolean aPlaceAssise() {
+  public boolean aPlaceAssise() {
     return true;
   }
 
-  boolean aPlaceDebout() {
+  public boolean aPlaceDebout() {
     return true;
   }
 

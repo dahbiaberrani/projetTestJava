@@ -5,17 +5,26 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * *
- * 	 @author Matteo MUNOZ
+ *
+ * @author Matteo MUNOZ
  */
 
 
 class PassagerStandardTest {
+    PassagerStandard mockPassager;
 
     @BeforeEach
     void setUp() {
+        mockPassager = mock(PassagerStandard.class);
+        when(mockPassager.estAssis()).thenReturn(false);
+        when(mockPassager.estDebout()).thenReturn(false);
+        when(mockPassager.estDehors()).thenReturn(true);
+        when(mockPassager.nom()).thenReturn("le Passager");
 
     }
 
@@ -25,10 +34,10 @@ class PassagerStandardTest {
 
     @Test
     void estDehors() {
-        Passager p = new PassagerStandard("Nathalie", 0);
-        assertTrue(p.estDehors());
-        assertFalse(p.estAssis());
-        assertFalse(p.estDebout());
+        //Passager p = new PassagerStandard("Nathalie", 0);
+        assertTrue(mockPassager.estDehors());
+        assertFalse(mockPassager.estAssis());
+        assertFalse(mockPassager.estDebout());
 
     }
 
@@ -74,17 +83,38 @@ class PassagerStandardTest {
 
     @Test
     void accepterPlaceDebout() {
+        Passager p = new PassagerStandard("Jesus", 0);
+        FauxBusDebout f = new FauxBusDebout();
+        f.demanderPlaceDebout(p);
+        assertTrue(p.estDebout());
+        assertFalse(p.estAssis());
+        assertFalse(p.estDehors());
     }
 
     @Test
-    void nouvelArret() {
+    void nouvelArret() throws UsagerInvalideException {
+        FauxBus f = new FauxBus();
+
+        PassagerStandard p1 = new PassagerStandard("Josephine", 3);
+        p1.monterDans(f);
+        p1.accepterPlaceAssise();
+        assertFalse(p1.estDehors());
+
+        p1.nouvelArret(f,2);
+        assertFalse(p1.estDebout());
+        assertFalse(p1.estDehors());
+
+
+        p1.nouvelArret(f,3);
+        assertTrue(p1.estDebout());
+        assertTrue(p1.estDehors());
     }
 
     @Test
     void nom() {
+        PassagerStandard p1 = new PassagerStandard("Joseph", 0);
+        assertSame("Joseph", p1.nom());
+
     }
 
-    @Test
-    void monterDans() {
-    }
 }
