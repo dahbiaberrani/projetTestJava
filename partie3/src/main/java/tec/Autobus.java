@@ -123,6 +123,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
 
     @Override
     public void allerArretSuivant() throws UsagerInvalideException {
+        this.numeroArret = numeroArret+1;
     }
 
     @Override

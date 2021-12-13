@@ -159,6 +159,7 @@ class AutobusTest {
 
     @Test
     void allerArretSuivant(){
-
+        p1.nouvelArret(a1,1);
+        p1.accepterSortie();
     }
 }
