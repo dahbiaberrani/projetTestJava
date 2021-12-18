@@ -79,8 +79,8 @@ public class jaugeNaturelTest2 {
 //    public void testMaxEgaleMin(){
 //        assertTrue(jaugeSup.estRouge(), "Vigie max égal à vigie min < départ");
 //        assertTrue(jaugeEgal.estBleu() && jaugeEgal.estRouge(), "Vigie max égal à vigie min égal au départ");
-//
 //    }
+    
     @Test
      void testCreationNonValide ( ) {
         Ijauge inverse = creerJauge ( 78 ,13 ,0 ) ;
