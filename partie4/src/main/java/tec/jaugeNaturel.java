@@ -35,10 +35,10 @@ public class jaugeNaturel implements Ijauge{
         if (vigieMin > vigieMax) {
             throw new IllegalArgumentException("le minimun ne doit pas être supérieur à maximum");
         }
-        if (vigieMin > vigieMax) {
-            throw new IllegalArgumentException("le minimun ne doit pas être supérieur à maximum");
+        if (depart < vigieMin || depart > vigieMax) {
+            throw new IllegalArgumentException("le depart ne doit pas être inferieur à minimun ou superieur au maximum");
         }
-        if (vigieMin > vigieMax) {
+        if (vigieMin == vigieMax) {
             throw new IllegalArgumentException("le minimun ne doit pas être supérieur à maximum");
         }
         valeur = depart;

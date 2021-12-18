@@ -20,11 +20,11 @@ public class jaugeNaturelTest2 {
         jauge1 = new jaugeNaturel(1, 100, 100);
         jauge2 = new jaugeNaturel(1, 100, 50);
         jauge3 = new jaugeNaturel(1, 100, 1);
-        jauge4 = new jaugeNaturel(1, 100, 0);
-        jauge5 = new jaugeNaturel(50, 25, 30);
-        jaugeEgal = new jaugeNaturel(20, 20, 20);
-        jaugeSup = new jaugeNaturel(20, 20, 30);
-        jaugeSupInter = new jaugeNaturel(1, 40, 41);
+//        jauge4 = new jaugeNaturel(1, 100, 0);
+//        jauge5 = new jaugeNaturel(50, 25, 30);
+//        jaugeEgal = new jaugeNaturel(20, 20, 20);
+//        jaugeSup = new jaugeNaturel(20, 20, 30);
+//        jaugeSupInter = new jaugeNaturel(1, 40, 41);
 
     }
 
