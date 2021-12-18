@@ -32,6 +32,15 @@ public class jaugeNaturel implements Ijauge{
      * @param depart   valeur initiale de la jauge.
      */
     public jaugeNaturel(long vigieMin, long vigieMax, long depart) {
+        if (vigieMin > vigieMax) {
+            throw new IllegalArgumentException("le minimun ne doit pas être supérieur à maximum");
+        }
+        if (vigieMin > vigieMax) {
+            throw new IllegalArgumentException("le minimun ne doit pas être supérieur à maximum");
+        }
+        if (vigieMin > vigieMax) {
+            throw new IllegalArgumentException("le minimun ne doit pas être supérieur à maximum");
+        }
         valeur = depart;
         min = vigieMin;
         max = vigieMax;

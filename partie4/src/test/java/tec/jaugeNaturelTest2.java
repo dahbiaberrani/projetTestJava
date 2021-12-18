@@ -10,6 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class jaugeNaturelTest2 {
     jaugeNaturel jauge1, jauge2, jauge3, jauge4,jauge5,jaugeEgal,jaugeSup,jaugeSupInter;
 
+
+    public Ijauge creerJauge(long min, long max, long val) {
+        return new jaugeNaturel(min, max, val);
+    }
+
     @BeforeEach
     void setUp() {
         jauge1 = new jaugeNaturel(1, 100, 100);
@@ -65,18 +70,22 @@ public class jaugeNaturelTest2 {
 
     }
 
+//    @Test
+//    public void testLimiteVigieMaxInferieurVigieMin() {
+//        assertTrue(jauge5.estBleu() && jauge5.estRouge() && !jauge5.estVert(), "La vigie max est inferieure a la vigie min");
+//    }
+//
+//    @Test
+//    public void testMaxEgaleMin(){
+//        assertTrue(jaugeSup.estRouge(), "Vigie max égal à vigie min < départ");
+//        assertTrue(jaugeEgal.estBleu() && jaugeEgal.estRouge(), "Vigie max égal à vigie min égal au départ");
+//
+//    }
     @Test
-    public void testLimiteVigieMaxInferieurVigieMin() {
-        assertTrue(jauge5.estBleu() && jauge5.estRouge() && !jauge5.estVert(), "La vigie max est inferieure a la vigie min");
+     void testCreationNonValide ( ) {
+        Ijauge inverse = creerJauge ( 78 ,13 ,0 ) ;
+        Ijauge egale = creerJauge(-45 ,-45, -45);
     }
-
-    @Test
-    public void testMaxEgaleMin(){
-        assertTrue(jaugeSup.estRouge(), "Vigie max égal à vigie min < départ");
-        assertTrue(jaugeEgal.estBleu() && jaugeEgal.estRouge(), "Vigie max égal à vigie min égal au départ");
-
-    }
-
     @Test
     void testSuperieurIntervalle() {
         assertTrue(jaugeSupInter.estRouge(), "estRouge() devrait renvoyer true");
