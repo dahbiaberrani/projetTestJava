@@ -4,12 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tec.jaugeNaturel;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class jaugeNaturelTest2 {
     jaugeNaturel jauge1, jauge2, jauge3, jauge4,jauge5,jaugeEgal,jaugeSup,jaugeSupInter;
-
 
     public Ijauge creerJauge(long min, long max, long val) {
         return new jaugeNaturel(min, max, val);
@@ -25,7 +23,6 @@ public class jaugeNaturelTest2 {
 //        jaugeEgal = new jaugeNaturel(20, 20, 20);
 //        jaugeSup = new jaugeNaturel(20, 20, 30);
 //        jaugeSupInter = new jaugeNaturel(1, 40, 41);
-
     }
 
     @AfterEach
@@ -63,11 +60,9 @@ public class jaugeNaturelTest2 {
         assertTrue(jauge3.estBleu(), "estBleu() devrait renvoyer true");
         assertFalse(jauge3.estRouge(), "estRouge() devrait renvoyer false");
         assertFalse(jauge3.estVert(), "estVert() devrait renvoyer false");
-
         assertTrue(jauge4.estBleu(), "estBleu() devrait renvoyer true");
         assertFalse(jauge4.estRouge(), "estRouge() devrait renvoyer false");
         assertFalse(jauge4.estVert(), "estVert() devrait renvoyer false");
-
     }
 
 //    @Test
@@ -80,17 +75,51 @@ public class jaugeNaturelTest2 {
 //        assertTrue(jaugeSup.estRouge(), "Vigie max égal à vigie min < départ");
 //        assertTrue(jaugeEgal.estBleu() && jaugeEgal.estRouge(), "Vigie max égal à vigie min égal au départ");
 //    }
-    
+
     @Test
      void testCreationNonValide ( ) {
-        Ijauge inverse = creerJauge ( 78 ,13 ,0 ) ;
-        Ijauge egale = creerJauge(-45 ,-45, -45);
+        Ijauge inverse = null;
+        Ijauge egale = null;
+        try {
+            inverse = creerJauge (78 ,13 ,0 );
+            assertFalse(true, "Pas d'exception levée");
+        } catch (Exception e) {
+            assertTrue(inverse == null );
+        }
+
+        try {
+            egale = creerJauge(-45 ,-45, -45);
+            assertFalse(true, "Pas d'exception levée");
+        } catch (Exception e) {
+            assertTrue(egale == null );
+        }
+
+//        le cas le depart est superieur à maximum
+        try {
+            Ijauge superieur = creerJauge(1 ,-45, 5);
+            assertFalse(true, "Pas d'exception levée");
+        } catch (Exception e) {
+
+        }
+
+//        le cas le depart est inferieur à minimun
+        try {
+            Ijauge inferieur = creerJauge(15 ,50, 5);
+            assertFalse(true, "Pas d'exception levée");
+        } catch (Exception e) {
+
+        }
     }
+
+    @Test
+    private void testExceptionControlee ( ) {
+        throw new NullPointerException ("Attention" ) ;
+    }
+
     @Test
     void testSuperieurIntervalle() {
         assertTrue(jaugeSupInter.estRouge(), "estRouge() devrait renvoyer true");
         jaugeSupInter.decrementer();
         assertTrue(jaugeSupInter.estRouge(), "estRouge() devrait renvoyer true");
-
     }
 }
