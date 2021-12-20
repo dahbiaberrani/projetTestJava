@@ -4,14 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static tec.FauxPassager.ASSIS;
-import static tec.FauxPassager.DEBOUT;
+import static tec.FauxPassager.*;
 
 
 class AutobusTest {
     Autobus a1;
     Autobus a2;
-    Autobus a3,a4;
+    Autobus a3,a4,a5;
     FauxPassager p1;
     FauxPassager p2;
     FauxPassager p3;
@@ -19,12 +18,12 @@ class AutobusTest {
     @BeforeEach
     void setUp() throws Exception {
         this.a1 = new Autobus(5,5);
-        this.a2 = new Autobus(5,0);
-        this.a3 = new Autobus(0,5);
+        this.a2 = new Autobus(5,5);
+        this.a3 = new Autobus(5,5);
         this.a4 = new Autobus(0);
-        p1=new FauxPassager();
-        p2=new FauxPassager();
-        p3=new FauxPassager();
+        this.p1 = new FauxPassager();
+        this.p2 = new FauxPassager();
+        this.p3 = new FauxPassager();
 
     }
 
@@ -40,7 +39,7 @@ class AutobusTest {
     void aPlaceAssise() {
         assertTrue(a1.aPlaceAssise());
         assertTrue(a2.aPlaceAssise());
-        assertFalse(a3.aPlaceAssise());
+        assertFalse(a4.aPlaceAssise());
     }
 
     /**
@@ -53,7 +52,7 @@ class AutobusTest {
     @Test
     void testaPlaceDebout() {
         assertTrue(a1.aPlaceDebout());
-        assertFalse(a2.aPlaceDebout());
+        assertFalse(a4.aPlaceDebout());
         assertTrue(a3.aPlaceDebout());
     }
 
@@ -68,6 +67,7 @@ class AutobusTest {
             p1.status = ASSIS;
             a2.demanderPlaceAssise(p2);
             p2.status = ASSIS;
+            p3.status = DEHORS;
             a3.demanderPlaceAssise(p3);
             p3.status = ASSIS;
 

@@ -63,7 +63,7 @@ public class Autobus extends  Bus {
     @Override
     public void demanderPlaceAssise(Passager p) {
         if (! p.estDehors() || !aPlaceAssise()) {
-             throw new IllegalArgumentException("le passager n'est pas dehors");
+             throw new IllegalArgumentException("le passager n'est pas dehors ou y a plus d places assises");
         }
         this.nbPlaceAssises.incrementer();
         p.accepterPlaceAssise();
@@ -97,8 +97,8 @@ public class Autobus extends  Bus {
 
     @Override
     public void demanderChangerEnDebout(Passager p){
-        if (!p.estAssis() || !this.aPlaceDebout()) {
-            throw new IllegalArgumentException("le passager est déja debout");
+        if (p.estDebout() || !this.aPlaceDebout()) {
+            throw new IllegalArgumentException("le passager est déja debout ou il n'y a plus de places debout");
         }
         this.nbPlaceAssises.decrementer();
         this.nbPlaceDebout.incrementer();
@@ -112,7 +112,7 @@ public class Autobus extends  Bus {
      */
     @Override
     public void demanderChangerEnAssis(Passager p){
-        if (!p.estDebout() || !this.aPlaceAssise()) {
+        if (p.estAssis() || !this.aPlaceAssise()) {
             throw new IllegalArgumentException("le passager est déja assis ou debout");
         }
         this.nbPlaceAssises.decrementer();
