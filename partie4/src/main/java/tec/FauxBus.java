@@ -1,8 +1,7 @@
 
 package tec;
 
-public class FauxBus implements Bus, Transport
-{
+public class FauxBus extends Bus {
   static final byte VIDE   = 0;
   static final byte DEBOUT = 1;
   static final byte ASSIS  = 2;
@@ -12,7 +11,7 @@ public class FauxBus implements Bus, Transport
   String message = "???";
 
 
-	// Crée les bus pour les tests
+	// Crï¿½e les bus pour les tests
 
   public static FauxBus creerVide()
 	{

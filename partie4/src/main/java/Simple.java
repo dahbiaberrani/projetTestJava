@@ -40,7 +40,6 @@ class Simple {
 
     Usager jayne = new PassagerStandard("Jayne", 4);
     jayne.monterDans(serenity);
-
     serenity.allerArretSuivant();
     // debogue
     System.out.println(serenity);

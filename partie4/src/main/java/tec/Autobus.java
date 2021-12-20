@@ -8,7 +8,7 @@ import java.util.List;
  * @author Dahbia BERRANI
  */
 
-public class Autobus implements Bus, Transport{
+public class Autobus extends  Bus {
 
     /** on declare 3 attributs de la classe autobus:
      * listePassager: lorsque en appel la methode monterDans() en ajoute ce passager à cette liste.

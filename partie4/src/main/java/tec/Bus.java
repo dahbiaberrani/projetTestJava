@@ -19,19 +19,19 @@ import java.util.function.Supplier;
  * Si la demande est acceptée, le bus déclenche les modificateurs 
  * de passager.
  */
-interface Bus {
+abstract class Bus implements  Transport{
 
   /**
    * vrai s'il existe des places assises.
    * @return vrai s'il existe des places assises
    */
-  public boolean aPlaceAssise();
+   abstract boolean aPlaceAssise();
 
   /**
    * vrai s'il existe des places debouts.
    * @return vrai s'il existe des places debouts
    */
-  public boolean aPlaceDebout();
+  abstract boolean aPlaceDebout();
 
   /**
    * Le passager entre dans ce bus en demandant une place assise.
@@ -39,7 +39,7 @@ interface Bus {
    * Cette méthode est appelée par Passager.
    * @param p le passager
    */
-  public void demanderPlaceAssise(Passager p);
+  abstract void demanderPlaceAssise(Passager p);
   /**
    * Le passager entre dans ce bus en demandant une place debout.
    * L'état du passager est forcément dehors.
@@ -47,7 +47,7 @@ interface Bus {
    * Elle change l'état du passager.
    * @param p le passager
    */
-  public void demanderPlaceDebout(Passager p);
+  abstract void demanderPlaceDebout(Passager p);
 
 
   /**
@@ -55,20 +55,20 @@ interface Bus {
    * Elle change l'état du passager.
    * @param p le passager avec un état assis.
    */
-  public void demanderChangerEnDebout(Passager p);
+  abstract void demanderChangerEnDebout(Passager p);
 
   /**
    * Change un passager d'une place debout vers une place assise.
    * Elle change l'état du passager.
    * @param p le passager avec un état debout.
    */
-  public void demanderChangerEnAssis(Passager p);
+  abstract void demanderChangerEnAssis(Passager p);
 
   /**
    * Fait sortir un passager du bus.
    * Elle change l'état du passager.
    * @param p le passager avec un état soit assis soit debout.
    */
-  public void demanderSortie(Passager p);
+  abstract void demanderSortie(Passager p);
 }
 
