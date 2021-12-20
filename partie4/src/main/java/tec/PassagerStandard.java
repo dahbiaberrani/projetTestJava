@@ -8,7 +8,7 @@ import com.google.common.annotations.VisibleForTesting;
  * @author Matteo MUNOZ
  */
 
-public class PassagerStandard implements Usager, Passager {
+public class PassagerStandard extends Passager {
     private EtatPassager etat;
     private String nom;
     private int destination;

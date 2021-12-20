@@ -1,6 +1,6 @@
 package tec;
 
-class FauxPassager implements Passager {
+class FauxPassager extends Passager {
   static final byte DEHORS = 0;
   static final byte ASSIS  = 1;
   static final byte DEBOUT = 2;
@@ -8,36 +8,41 @@ class FauxPassager implements Passager {
 
   String message ="???";
 
-  public String nom() {
+   public String nom() {
     return null;
   }
 
-  public boolean estDehors() {
+  @Override
+  public void monterDans(Transport t) throws UsagerInvalideException {
+
+  }
+
+  boolean estDehors() {
     return status == DEHORS;
   }
   
-  public boolean estAssis() {
+   boolean estAssis() {
     return status == ASSIS;
   }
   
-  public boolean estDebout() {
+   boolean estDebout() {
     return status == DEBOUT;
   }
 
-  public void accepterSortie() {
+   void accepterSortie() {
     message = ":accepterSortie:";
   }
 
-  public void accepterPlaceAssise() {
+   void accepterPlaceAssise() {
     message = ":accepterPlaceAssise:";
   }
 
-  public void accepterPlaceDebout() {
+   void accepterPlaceDebout() {
 
     message = ":accepterPlaceDebout:";
   }
 
-  public void nouvelArret(Bus b, int numeroArret) {
+   void nouvelArret(Bus b, int numeroArret) {
     message = ":nouvelArret " + numeroArret + ":";
   }
 }

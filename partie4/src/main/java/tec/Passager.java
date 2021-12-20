@@ -21,45 +21,41 @@ package tec;
  * <p>
  * Quand il arrive à son arrét de destination, un passager sort du bus.
  */
-interface Passager {
-  /**
-   * fournit le nom de l'usager.
-   */
-  public String nom();
+abstract class Passager implements  Usager {
 
   /**
    * Retourne vrai si le passager est hors du bus.
    * @return vrai si le passager est hors du bus.
    */
-  public boolean estDehors();
+  abstract boolean estDehors();
   /**
    * Retourne vrai si le passager est assis dans le bus.
    * @return vrai si le passager est assis dans le bus.
    */
-  public boolean estAssis();
+  abstract boolean estAssis();
   /**
    * Retourne vrai si le passager est debout dans le bus.
    * @return vrai si le passager est debout dans le bus.
    */
-  public boolean estDebout();
+  abstract boolean estDebout();
 
   /**
    * Change l'état du passager en hors du bus.
    * Cette méthode est appelée par un objet Bus.
    */
-  public void accepterSortie();
+  abstract void accepterSortie();
   /**
    * Change l'état du passager en assis. 
    * Le passager est dans le bus.
    * Cette méthode est appelée par un objet Bus.
    */
-  public void accepterPlaceAssise();
+  abstract void accepterPlaceAssise();
   /**
    * Change l'état du passager en debout.
    * Le passager est dans le bus.
    * Cette méthode est appelée par un objet Bus.
    */
-  public void accepterPlaceDebout();
+  abstract void accepterPlaceDebout();
 
   /**
    * Indique au passager qu'il est arrivé à un nouvel arrêt. Cette methode
@@ -69,6 +65,6 @@ interface Passager {
    * @param bus le bus dans lequel se trouve le passager.
    * @param numeroArret numero de l'arrêt.
    */
-  public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException;
+  abstract void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException;
 }
 
