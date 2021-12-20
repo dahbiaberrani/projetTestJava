@@ -18,11 +18,11 @@ public class jaugeNaturelTest2 {
         jauge1 = new jaugeNaturel(1, 100, 100);
         jauge2 = new jaugeNaturel(1, 100, 50);
         jauge3 = new jaugeNaturel(1, 100, 1);
-//        jauge4 = new jaugeNaturel(1, 100, 0);
-//        jauge5 = new jaugeNaturel(50, 25, 30);
-//        jaugeEgal = new jaugeNaturel(20, 20, 20);
-//        jaugeSup = new jaugeNaturel(20, 20, 30);
-//        jaugeSupInter = new jaugeNaturel(1, 40, 41);
+        jauge4 = new jaugeNaturel(1, 100, 0);
+        jauge5 = new jaugeNaturel(50, 25, 30);
+        jaugeEgal = new jaugeNaturel(20, 20, 20);
+        jaugeSup = new jaugeNaturel(20, 20, 30);
+        jaugeSupInter = new jaugeNaturel(1, 40, 41);
     }
 
     @AfterEach
@@ -96,20 +96,20 @@ public class jaugeNaturelTest2 {
         }
 
 //        le cas le depart est superieur à maximum
-        try {
-            Ijauge superieur = creerJauge(1 ,-45, 5);
-            assertFalse(true, "Pas d'exception levée");
-        } catch (Exception e) {
-
-        }
+//        try {
+//            Ijauge superieur = creerJauge(1 ,-45, 5);
+//            assertFalse(true, "Pas d'exception levée");
+//        } catch (Exception e) {
+//
+//        }
 
 //        le cas le depart est inferieur à minimun
-        try {
-            Ijauge inferieur = creerJauge(15 ,50, 5);
-            assertFalse(true, "Pas d'exception levée");
-        } catch (Exception e) {
-
-        }
+//        try {
+//            Ijauge inferieur = creerJauge(15 ,50, 5);
+//            assertFalse(true, "Pas d'exception levée");
+//        } catch (Exception e) {
+//
+//        }
     }
 
     @Test

@@ -6,6 +6,7 @@ package tec;
  * <p>
  * Soit le transport ne contient pas cet usager. Soit l'état de l'usager (assis/debout/dehors) 
  * est incohérent avec sa demande au transport.
+ *  * @author Matteo MUNOZ
  */
 public class UsagerInvalideException extends Exception {
   public final Usager quelUsager;

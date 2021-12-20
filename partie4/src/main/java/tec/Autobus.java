@@ -58,12 +58,14 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      * @param p le passager
      */
 
-    public void demanderPlaceAssise(Passager p){
-        if (aPlaceAssise() && p.estDehors()) {
-            this.nbPlaceAssises.incrementer();
-            p.accepterPlaceAssise();
-            this.passagers.add(p);
+    public void demanderPlaceAssise(Passager p) {
+        if (! p.estDehors() || !aPlaceAssise()) {
+             throw new IllegalArgumentException("le passager n'est pas dehors");
         }
+        this.nbPlaceAssises.incrementer();
+        p.accepterPlaceAssise();
+        this.passagers.add(p);
+
     }
 
     /**
@@ -75,11 +77,12 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderPlaceDebout(Passager p){
-        if(p.estDehors() && this.aPlaceDebout()) {
-            this.passagers.add(p);
-            this.nbPlaceDebout.incrementer();
-            p.accepterPlaceDebout();
+        if(!p.estDehors() || !this.aPlaceDebout()) {
+            throw new IllegalArgumentException("le passager n'est pas dehors");
         }
+        this.passagers.add(p);
+        this.nbPlaceDebout.incrementer();
+        p.accepterPlaceDebout();
     }
 
     /**
@@ -89,11 +92,12 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnDebout(Passager p){
-        if (p.estAssis() && this.aPlaceDebout()) {
-            this.nbPlaceAssises.decrementer();
-            this.nbPlaceDebout.incrementer();
-            p.accepterPlaceDebout();
+        if (!p.estAssis() || !this.aPlaceDebout()) {
+            throw new IllegalArgumentException("le passager est déja debout");
         }
+        this.nbPlaceAssises.decrementer();
+        this.nbPlaceDebout.incrementer();
+        p.accepterPlaceDebout();
     }
 
     /**
@@ -103,11 +107,12 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      */
 
     public void demanderChangerEnAssis(Passager p){
-        if (p.estDebout() && this.aPlaceAssise()) {
-            this.nbPlaceAssises.decrementer();
-            this.nbPlaceDebout.incrementer();
-            p.accepterPlaceAssise();
+        if (!p.estDebout() || !this.aPlaceAssise()) {
+            throw new IllegalArgumentException("le passager est déja assis ou debout");
         }
+        this.nbPlaceAssises.decrementer();
+        this.nbPlaceDebout.incrementer();
+        p.accepterPlaceAssise();
     }
 
     /**
@@ -130,20 +135,22 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
     /**
      * Indique au tranport de simuler l'arrêt suivant.
      *
-     * @throws  si l'état du l'usager est incohérent par rapport à sa demande.
+     * @throws  UsagerInvalideException si l'état du l'usager est incohérent par rapport à sa demande.
      */
 
     @Override
     public void allerArretSuivant() throws UsagerInvalideException {
         this.numeroArret++;
         for (Passager p : passagers) {
-            p.nouvelArret(this, numeroArret);
+            try {
+                p.nouvelArret(this, numeroArret);
+            } catch (IllegalArgumentException e) {
+                throw new UsagerInvalideException("problème usager invalide");
+            }
         }
-
         for (Passager p : passagersASuprimmer) {
             this.passagers.remove(p);
         }
-
         this.passagersASuprimmer.clear();
     }
 

@@ -69,6 +69,6 @@ interface Passager {
    * @param bus le bus dans lequel se trouve le passager.
    * @param numeroArret numero de l'arrêt.
    */
-  public void nouvelArret(Bus bus, int numeroArret);
+  public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException;
 }
 

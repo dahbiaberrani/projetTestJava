@@ -1,5 +1,7 @@
 package tec;
 
+import com.google.common.annotations.VisibleForTesting;
+
 /**
  * class PassagerStandard implement Usager et Passager
  *
@@ -48,7 +50,10 @@ public class PassagerStandard implements Usager, Passager {
     }
 
     @Override
-    public void nouvelArret(Bus bus, int numeroArret) {
+    public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException {
+        if (this.destination < numeroArret) {
+            throw new IllegalArgumentException("Arrêt a dépasser la destination");
+        }
         if (numeroArret == this.destination) {
             bus.demanderSortie(this);
         }

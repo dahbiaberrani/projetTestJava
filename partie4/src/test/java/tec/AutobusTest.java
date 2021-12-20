@@ -62,16 +62,16 @@ class AutobusTest {
 
     @Test
     void testdDemanderPlaceAssise() {
-        a1.demanderPlaceAssise(p1);
-        p1.status = ASSIS;
-        a2.demanderPlaceAssise(p2);
-        p2.status = ASSIS;
-        a3.demanderPlaceAssise(p3);
-        p3.status = ASSIS;
+            a1.demanderPlaceAssise(p1);
+            p1.status = ASSIS;
+            a2.demanderPlaceAssise(p2);
+            p2.status = ASSIS;
+            a3.demanderPlaceAssise(p3);
+            p3.status = ASSIS;
 
-        assertTrue(p1.estAssis());
-        assertTrue(p2.estAssis());
-        assertTrue(p3.estAssis());
+            assertTrue(p1.estAssis());
+            assertTrue(p2.estAssis());
+            assertTrue(p3.estAssis());
     }
 
     /**Avec une instanciation de passager
