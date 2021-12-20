@@ -11,15 +11,17 @@ import static tec.FauxPassager.DEBOUT;
 class AutobusTest {
     Autobus a1;
     Autobus a2;
-    Autobus a3;
+    Autobus a3,a4;
     FauxPassager p1;
     FauxPassager p2;
     FauxPassager p3;
+
     @BeforeEach
     void setUp() throws Exception {
-        this.a1= new Autobus(5,5);
-        this.a2= new Autobus(5,0);
-        this.a3= new Autobus(0,5);
+        this.a1 = new Autobus(5,5);
+        this.a2 = new Autobus(5,0);
+        this.a3 = new Autobus(0,5);
+        this.a4 = new Autobus(0);
         p1=new FauxPassager();
         p2=new FauxPassager();
         p3=new FauxPassager();
@@ -161,5 +163,10 @@ class AutobusTest {
         p1.nouvelArret(a1,1);
         p1.accepterSortie();
         assertTrue(p1.estDehors());
+    }
+    @Test
+    void TestNewConstructor() {
+        assertFalse(a4.aPlaceAssise());
+        assertFalse(a4.aPlaceDebout());
     }
 }

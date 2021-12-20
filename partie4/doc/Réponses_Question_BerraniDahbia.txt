@@ -16,3 +16,8 @@ une des solutions :
 de transformer l'interface Bus en classe abstraites visible par le package uniquement et rendre toutes les methods
 abstraites visible uniquement par le package. Et on peut rn profoter dans ce cas , pour simplifier l'architecture en
 mettant cette classe abstraite implement idrectemetn l'interface Trasport.
+
+desanvantage de cette solution:
+_______________________________
+
+la classe abstraite Bus ne comporte aucun code, elle ressemble à une interface.

@@ -29,6 +29,9 @@ public class Autobus extends  Bus {
         this.passagers = new ArrayList<Passager>();
         this.passagersASuprimmer = new ArrayList<Passager>();
     }
+    public Autobus(int nbPlace ) {
+        this(nbPlace,nbPlace);
+    }
 
     /**
      * vrai s'il existe des places assises.
