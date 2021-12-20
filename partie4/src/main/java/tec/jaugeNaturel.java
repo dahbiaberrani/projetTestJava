@@ -44,9 +44,7 @@ public class jaugeNaturel implements Ijauge{
         valeur = depart;
         min = vigieMin;
         max = vigieMax;
-        /* Le constructeur d'une classe permet d'initialiser l'etat de l'instance creee.
-         * Son nom correspond toujours au nom de la classe. Il n'y a pas de type de retour.
-         */
+
     }
 
 

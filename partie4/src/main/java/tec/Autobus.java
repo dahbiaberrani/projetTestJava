@@ -8,7 +8,7 @@ import java.util.List;
  * @author Dahbia BERRANI
  */
 
-public class Autobus<PassagerAbstract> implements Bus, Transport{
+public class Autobus implements Bus, Transport{
 
     /** on declare 3 attributs de la classe autobus:
      * listePassager: lorsque en appel la methode monterDans() en ajoute ce passager à cette liste.
@@ -28,14 +28,13 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
         this.numeroArret = 0;
         this.passagers = new ArrayList<Passager>();
         this.passagersASuprimmer = new ArrayList<Passager>();
-
     }
 
     /**
      * vrai s'il existe des places assises.
      * @return vrai s'il existe des places assises
      */
-
+    @Override
     public boolean aPlaceAssise(){
 
         return !this.nbPlaceAssises.estRouge();
@@ -46,6 +45,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      * @return vrai s'il existe des places debouts
      */
 
+    @Override
     public boolean aPlaceDebout(){
         return !this.nbPlaceDebout.estRouge();
     }
@@ -57,7 +57,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      * Elle change l'état du passager.
      * @param p le passager
      */
-
+    @Override
     public void demanderPlaceAssise(Passager p) {
         if (! p.estDehors() || !aPlaceAssise()) {
              throw new IllegalArgumentException("le passager n'est pas dehors");
@@ -76,6 +76,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      * @param p le passager
      */
 
+    @Override
     public void demanderPlaceDebout(Passager p){
         if(!p.estDehors() || !this.aPlaceDebout()) {
             throw new IllegalArgumentException("le passager n'est pas dehors");
@@ -91,6 +92,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      * @param p le passager avec un état assis.
      */
 
+    @Override
     public void demanderChangerEnDebout(Passager p){
         if (!p.estAssis() || !this.aPlaceDebout()) {
             throw new IllegalArgumentException("le passager est déja debout");
@@ -105,7 +107,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      * Elle change l'état du passager.
      * @param p le passager avec un état debout.
      */
-
+    @Override
     public void demanderChangerEnAssis(Passager p){
         if (!p.estDebout() || !this.aPlaceAssise()) {
             throw new IllegalArgumentException("le passager est déja assis ou debout");
@@ -120,7 +122,7 @@ public class Autobus<PassagerAbstract> implements Bus, Transport{
      * Elle change l'état du passager.
      * @param p le passager avec un état soit assis soit debout.
      */
-
+    @Override
     public void demanderSortie(Passager p){
         if (p.estAssis()) {
             this.nbPlaceAssises.decrementer();

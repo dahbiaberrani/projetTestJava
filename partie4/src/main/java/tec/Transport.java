@@ -13,7 +13,7 @@ public interface Transport {
   /**
    * Indique au tranport de simuler l'arrêt suivant.
    *
-   * @throws si l'état du l'usager est incohérent par rapport à sa demande.
+   * @throws UsagerInvalideException si l'état du l'usager est incohérent par rapport à sa demande.
    */
   public void allerArretSuivant() throws UsagerInvalideException;
 }

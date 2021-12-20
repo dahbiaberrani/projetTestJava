@@ -1,0 +1,14 @@
+Réponse questions 2.2:
+les interface son toujours public en java parceque sont implementer par des classe
+les methode de la interface doit être public parce que la classe qui implement cette interface il doit implementer ces methodes.
+les client simple besoin que des methode suivante:
+la classe Autobus:
+_________________
+le costructeur
+allerArretSuivant()
+
+la classe Autobus:
+___________________
+le costructeur
+monterDans()
+
