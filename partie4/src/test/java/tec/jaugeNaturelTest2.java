@@ -83,6 +83,7 @@ public class jaugeNaturelTest2 {
         try {
             inverse = creerJauge (78 ,13 ,0 );
             assertFalse(true, "Pas d'exception levée");
+            System.out.println(inverse);
         } catch (Exception e) {
             assertTrue(inverse == null );
         }
@@ -112,12 +113,18 @@ public class jaugeNaturelTest2 {
     }
 
     @Test
-    private void testExceptionControlee ( ) {
-        throw new NullPointerException ("Attention" ) ;
+    void testExceptionControlee () {
+
+        throw new NullPointerException ("Attention") ;
     }
 
     @Test
-    void testSuperieurIntervalle() {
+    void testExceptionControlee1()  throws  ClassNotFoundException {
+         throw new ClassNotFoundException("Attention");
+    }
+
+    @Test
+    void testSuperieurIntervalle()  {
         assertTrue(jaugeSupInter.estRouge(), "estRouge() devrait renvoyer true");
         jaugeSupInter.decrementer();
         assertTrue(jaugeSupInter.estRouge(), "estRouge() devrait renvoyer true");
