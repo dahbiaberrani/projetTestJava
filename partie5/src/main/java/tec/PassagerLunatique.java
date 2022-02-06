@@ -13,28 +13,33 @@ public class PassagerLunatique extends PassagerAbstrait {
     }
 
     @Override
-    public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException {
-        if (this.getDestination() < bus.getNumeroArret()) {
-            throw new IllegalArgumentException("Arrêt a dépasser la destination");
-        }
-        if (bus.getNumeroArret() == this.getDestination()) {
-            bus.demanderSortie(this);
+    public void choixPlaceMontee(Bus b) {
+        if (b.aPlaceDebout()) {
+            b.demanderPlaceDebout(this);
         }
     }
 
     @Override
-    public void monterDans(Transport t) throws UsagerInvalideException {
-        if (t instanceof Bus bus) {
-            if (bus.aPlaceAssise()) {
-                bus.demanderPlaceAssise(this);
-            } else {
-                if (bus.aPlaceDebout()) {
-                    bus.demanderPlaceDebout(this);
-                }
+    public void choixChangerPlace(Bus b, int numeroArret) {
+        if (this.getDestination() == b.getNumeroArret()) {
+            b.demanderSortie(this);
+            this.accepterSortie();
+        } else if (estAssis()) {
+            if (b.aPlaceDebout()) {
+                b.demanderChangerEnDebout(this);
+            } else try {
+                throw new UsagerInvalideException("Usager Lunatique n'as pas pu se lever");
+            } catch (UsagerInvalideException e) {
+                e.printStackTrace();
             }
-        } else {
-            throw new UsagerInvalideException("Le passager n'est pas dans un bus");
+        } else if (b.aPlaceAssise()) {
+            b.demanderChangerEnAssis(this);
+        } else try {
+            throw new UsagerInvalideException("Usager Lunatique n'as pas pu s'assoir");
+        } catch (UsagerInvalideException e) {
+            e.printStackTrace();
         }
+
     }
 
 }

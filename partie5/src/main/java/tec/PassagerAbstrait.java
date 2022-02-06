@@ -6,12 +6,12 @@ package tec;
  * @author Matteo MUNOZ
  */
 
-public abstract class PassagerAbstrait extends Passager implements Usager{
+public abstract class PassagerAbstrait extends Passager implements Usager {
     private EtatPassager etat;
     private String nom;
     private int destination;
 
-    public PassagerAbstrait(String string, int i) {
+    protected PassagerAbstrait(String string, int i) {
         etat = new EtatPassager(EtatPassager.Etat.DEHORS);
         this.nom = string;
         this.destination = i;
@@ -48,7 +48,9 @@ public abstract class PassagerAbstrait extends Passager implements Usager{
     }
 
     @Override
-    public abstract void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException;
+    public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException{
+     choixChangerPlace(bus, numeroArret);
+    }
 
     public int getDestination() {
         return destination;
@@ -60,7 +62,15 @@ public abstract class PassagerAbstrait extends Passager implements Usager{
     }
 
     @Override
-    public abstract void monterDans(Transport t) throws UsagerInvalideException;
+    public void monterDans(Transport t) throws UsagerInvalideException {
+        if (t instanceof Autobus autobus) {
+            choixPlaceMontee(autobus);
+        }
+    }
+
+    public abstract void choixPlaceMontee(Bus b);
+
+    public abstract void choixChangerPlace(Bus b, int numeroArret);
 
     @Override
     public String toString() {
