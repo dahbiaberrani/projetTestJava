@@ -163,4 +163,8 @@ public class Autobus extends  Bus {
     public String toString() {
         return ("[ arret:" + this.numeroArret + ", assis:" + this.nbPlaceAssises.toString() + ", debout:" + this.nbPlaceDebout.toString() + "]");
     }
+
+    public int getNumeroArret() {
+        return numeroArret;
+    }
 }

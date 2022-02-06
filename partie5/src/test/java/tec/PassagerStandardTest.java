@@ -93,7 +93,7 @@ class PassagerStandardTest {
 
     @Test
     void nouvelArret() throws UsagerInvalideException {
-        FauxBus f = new FauxBus();
+        Autobus f = new Autobus(2,2);
 
         PassagerStandard p1 = new PassagerStandard("Josephine", 3);
         p1.monterDans(f);

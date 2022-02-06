@@ -6,9 +6,9 @@ package tec;
  * @author Matteo MUNOZ
  */
 
-public class PassagerStandard extends PassagerAbstrait {
+public class PassagerStresse extends PassagerAbstrait {
 
-    public PassagerStandard(String string, int i) {
+    public PassagerStresse(String string, int i) {
         super(string, i);
     }
 

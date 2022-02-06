@@ -79,6 +79,11 @@ public class FauxBus extends Bus {
     message = ":demanderSortie:";
   }
 
+  @Override
+  int getNumeroArret() {
+    return 0;
+  }
+
   public void allerArretSuivant() {}
 }
 

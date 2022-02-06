@@ -70,5 +70,10 @@ abstract class Bus implements  Transport{
    * @param p le passager avec un état soit assis soit debout.
    */
   abstract void demanderSortie(Passager p);
+
+  abstract int getNumeroArret();
+
 }
+
+
 
