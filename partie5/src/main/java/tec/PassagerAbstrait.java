@@ -3,13 +3,13 @@ package tec;
 /**
  * class PassagerStandard implement Usager et Passager
  *
- * @author Matteo MUNOZ
+ * @author Matteo MUNOZ and Dahbia BERRANI
  */
 
-public abstract class PassagerAbstrait extends Passager implements Usager {
-    private EtatPassager etat;
-    private String nom;
-    private int destination;
+public abstract class PassagerAbstrait implements Passager, Usager {
+    private final EtatPassager etat;
+    private final String nom;
+    private final int destination;
 
     protected PassagerAbstrait(String string, int i) {
         etat = new EtatPassager(EtatPassager.Etat.DEHORS);
@@ -48,8 +48,11 @@ public abstract class PassagerAbstrait extends Passager implements Usager {
     }
 
     @Override
-    public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException{
-     choixChangerPlace(bus, numeroArret);
+    public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException, UsagerInvalideException {
+        if (this.destination < numeroArret) {
+            throw new IllegalArgumentException("Arrêt a dépasser la destination");
+        }
+        choixChangerPlace(bus, numeroArret);
     }
 
     public int getDestination() {
@@ -68,9 +71,9 @@ public abstract class PassagerAbstrait extends Passager implements Usager {
         }
     }
 
-    public abstract void choixPlaceMontee(Bus b);
+    public abstract void choixPlaceMontee(Bus b) throws UsagerInvalideException;
 
-    public abstract void choixChangerPlace(Bus b, int numeroArret);
+    public abstract void choixChangerPlace(Bus b, int numeroArret) throws UsagerInvalideException;
 
     @Override
     public String toString() {

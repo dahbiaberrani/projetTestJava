@@ -11,7 +11,7 @@ public class FauxBus extends Bus {
   String message = "???";
 
 
-	// Cr�e les bus pour les tests
+	// Cree les bus pour les tests
 
   public static FauxBus creerVide()
 	{
@@ -39,10 +39,8 @@ public class FauxBus extends Bus {
     this.statut = statut;
   }
 
-  public FauxBus()
-  {
+  public FauxBus() {
   }
-
 
   public boolean aPlaceAssise()
 	{

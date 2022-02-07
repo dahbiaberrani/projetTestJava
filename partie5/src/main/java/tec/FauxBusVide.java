@@ -36,6 +36,6 @@ public class FauxBusVide {
     p.accepterSortie();
   }
 
-  public void allerArretSuivant() { //throws UsagerInvalideException {
+  public void allerArretSuivant() {
   }
 }

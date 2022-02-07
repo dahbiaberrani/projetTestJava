@@ -8,7 +8,7 @@ package tec;
  * Les instances de cette classe sont des objets constants.
  **/
 public class EtatPassagerChaine implements IEtatPassager {
-  private  String monEtat;
+  private final String monEtat;
 
   public EtatPassagerChaine(String e) {
     this.monEtat = e;
@@ -27,7 +27,7 @@ public class EtatPassagerChaine implements IEtatPassager {
    * @return vrai si instanciation avec DEHORS;
    */
   public boolean estExterieur() {
-    return this.monEtat == "DEHORS";
+    return this.monEtat.equals("DEHORS");
 
   }
 
@@ -37,7 +37,7 @@ public class EtatPassagerChaine implements IEtatPassager {
    * @return vrai si instanciation avec ASSIS;
    */
   public boolean estAssis() {
-    return this.monEtat == "ASSIS";
+    return this.monEtat.equals("ASSIS");
   }
 
   /**
@@ -46,7 +46,7 @@ public class EtatPassagerChaine implements IEtatPassager {
    * @return vrai si instanciation avec DEBOUT;
    */
   public boolean estDebout() {
-    return this.monEtat == "DEBOUT";
+    return this.monEtat.equals("DEBOUT");
   }
 
   /**
@@ -55,7 +55,7 @@ public class EtatPassagerChaine implements IEtatPassager {
    * @return vrai si instanciation avec ASSIS ou DEBOUT.
    */
   public boolean estInterieur() {
-    return this.monEtat == "DEBOUT" || this.monEtat == "ASSIS";
+    return this.monEtat.equals("DEBOUT") || this.monEtat.equals("ASSIS");
   }
 
 

@@ -3,7 +3,7 @@ package tec;
 /**
  * class PassagerStandard implement Usager et Passager
  *
- * @author Matteo MUNOZ
+ * @author Matteo MUNOZ and Dahbia BERRANI
  */
 
 public class PassagerStandard extends PassagerAbstrait {
@@ -13,11 +13,15 @@ public class PassagerStandard extends PassagerAbstrait {
     }
 
     @Override
-    public void choixPlaceMontee(Bus b) {
+    public void choixPlaceMontee(Bus b) throws UsagerInvalideException {
         if (b.aPlaceAssise()) {
             b.demanderPlaceAssise(this);
         } else {
-            b.demanderPlaceDebout(this);
+            if (b.aPlaceDebout()) {
+                b.demanderPlaceDebout(this);
+            } else {
+                throw new UsagerInvalideException("Usager Standard n'a pas pu monter car aucune place n'est disponible");
+            }
         }
     }
 

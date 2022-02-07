@@ -3,7 +3,6 @@ package tec;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tec.*;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,7 +16,7 @@ class IJaugeTest {
         Ijauge j;
         switch (typeJauge) {
             case "JaugeDistance" -> {
-                j = new jaugeDistance(min, max, val);
+                j = new JaugeDistance(min, max, val);
                 return j;
             }
             case "JaugeNaturel" -> {
@@ -29,7 +28,7 @@ class IJaugeTest {
                 return j;
             }
             case "JaugeReel" -> {
-                j = new jaugeReel(min, max, val);
+                j = new JaugeReel(min, max, val);
                 return j;
             }
         }

@@ -21,41 +21,41 @@ package tec;
  * <p>
  * Quand il arrive à son arrét de destination, un passager sort du bus.
  */
-abstract class Passager implements  Usager {
+interface Passager extends Usager {
 
   /**
    * Retourne vrai si le passager est hors du bus.
    * @return vrai si le passager est hors du bus.
    */
-  abstract boolean estDehors();
+  boolean estDehors();
   /**
    * Retourne vrai si le passager est assis dans le bus.
    * @return vrai si le passager est assis dans le bus.
    */
-  abstract boolean estAssis();
+  boolean estAssis();
   /**
    * Retourne vrai si le passager est debout dans le bus.
    * @return vrai si le passager est debout dans le bus.
    */
-  abstract boolean estDebout();
+  boolean estDebout();
 
   /**
    * Change l'état du passager en hors du bus.
    * Cette méthode est appelée par un objet Bus.
    */
-  abstract void accepterSortie();
+  void accepterSortie();
   /**
    * Change l'état du passager en assis. 
    * Le passager est dans le bus.
    * Cette méthode est appelée par un objet Bus.
    */
-  abstract void accepterPlaceAssise();
+  void accepterPlaceAssise();
   /**
    * Change l'état du passager en debout.
    * Le passager est dans le bus.
    * Cette méthode est appelée par un objet Bus.
    */
-  abstract void accepterPlaceDebout();
+  void accepterPlaceDebout();
 
   /**
    * Indique au passager qu'il est arrivé à un nouvel arrêt. Cette methode
@@ -65,6 +65,5 @@ abstract class Passager implements  Usager {
    * @param bus le bus dans lequel se trouve le passager.
    * @param numeroArret numero de l'arrêt.
    */
-  abstract void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException;
+  void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException, UsagerInvalideException;
 }
-

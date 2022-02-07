@@ -1,7 +1,5 @@
 package tec;
 
-import java.util.function.Supplier;
-
 /**
  * Cette interface définit un des types abstraits fixant les interactions
  * avec les passagers. 
@@ -19,7 +17,7 @@ import java.util.function.Supplier;
  * Si la demande est acceptée, le bus déclenche les modificateurs 
  * de passager.
  */
-abstract class Bus implements  Transport{
+abstract class Bus implements Transport {
 
   /**
    * vrai s'il existe des places assises.

@@ -4,16 +4,17 @@ package tec;
  * Cette classe représente l'état d'un passager dans un transport.
  * Il y a un état à l'exterieur du transport (dehors) et deux états à 
  * l'intérieur (assis, debout).
- *  
+ *
  * Les instances de cette classe sont des objets constants.
  **/
 public class EtatPassagerMonter {
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
-  public enum Etat {/** passager assis à l'intérieur */  ASSIS,
-                    /** passager debout à l'intérieur */ DEBOUT,
-                    };
+  public enum Etat {
+    /** passager assis à l'intérieur */  ASSIS,
+    /** passager debout à l'intérieur */ DEBOUT,
+  }
 
   private final Etat monEtat;
 
@@ -82,8 +83,8 @@ public class EtatPassagerMonter {
    */
   @Override
   public String toString() {
-	String s;
-	//if etta ==DEHORS s ="dehors"
+    String s;
+    //if etta ==DEHORS s ="dehors"
     return "<" + monEtat + ">";
   }
 }

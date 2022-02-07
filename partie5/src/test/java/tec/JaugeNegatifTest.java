@@ -1,26 +1,30 @@
+/**
+ * *
+ *
+ * @author Matteo MUNOZ and Dahbia BERRANI
+ */
 package tec;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tec.jaugeReel;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class jaugeReelTest {
-    jaugeReel jauge1, jauge2, jauge3, jauge4, jauge5,jaugeEgal,jaugeSup,jaugeSupInter;
+class JaugeNegatifTest {
+    jaugeNegatif jauge1, jauge2, jauge3, jauge4, jauge5,jaugeEgal,jaugeSup,jaugeSupInter;
 
     @BeforeEach
     void setUp() {
-        jauge1 = new jaugeReel(1, 100, 100);
-        jauge2 = new jaugeReel(1, 100, 50);
-        jauge3 = new jaugeReel(1, 100, 1);
-        jauge4 = new jaugeReel(1, 100, 0);
-        jauge5 = new jaugeReel(50, 25, 30);
-        jaugeEgal = new jaugeReel(20, 20, 20);
-        jaugeSup = new jaugeReel(20, 20, 30);
-        jaugeSupInter = new jaugeReel(1, 40, 41);
+        jauge1 = new jaugeNegatif(1, -100, 100);
+        jauge2 = new jaugeNegatif(1, 100, 50);
+        jauge3 = new jaugeNegatif(1, 100, 1);
+        jauge4 = new jaugeNegatif(1, 100, 0);
+        jauge5 = new jaugeNegatif(50, 25, 30);
+        jaugeEgal = new jaugeNegatif(20, 20, 20);
+        jaugeSup = new jaugeNegatif(20, 20, 30);
+        jaugeSupInter = new jaugeNegatif(1, 40, 41);
 
     }
 
@@ -67,12 +71,12 @@ class jaugeReelTest {
     }
 
     @Test
-    public void testLimiteVigieMaxInferieurVigieMin() {
+    void testLimiteVigieMaxInferieurVigieMin() {
         assertTrue(jauge5.estBleu() && jauge5.estRouge() && !jauge5.estVert(), "La vigie max est inferieure a la vigie min");
     }
 
     @Test
-    public void testMaxEgaleMin(){
+    void testMaxEgaleMin(){
         assertTrue(jaugeSup.estRouge(), "Vigie max égal à vigie min < départ");
         assertTrue(jaugeEgal.estBleu() && jaugeEgal.estRouge(), "Vigie max égal à vigie min égal au départ");
 

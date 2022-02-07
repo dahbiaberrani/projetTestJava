@@ -12,15 +12,14 @@ public interface Usager {
   /**
    * fournit le nom de l'usager.
    */
-  public String nom();
+  String nom();
 
   /**
    * Fournit à l'usager le transport auquel il peut accéder.
    * Cette méthode réalise le caractère du passager à la montée.
-   * 
+   *
    * @param t le transport dans lequel désire monter l'usager.
    * @throws UsagerInvalideException si l'état de l'usager est incohérent par rapport à sa demande.
    */
   public void monterDans(Transport t) throws UsagerInvalideException;
 }
-

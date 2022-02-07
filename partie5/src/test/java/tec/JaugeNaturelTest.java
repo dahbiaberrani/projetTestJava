@@ -1,13 +1,18 @@
+/**
+ * *
+ *
+ * @author Matteo MUNOZ and Dahbia BERRANI
+ */
 package tec;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tec.jaugeNaturel;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class jaugeNaturelTest {
+class JaugeNaturelTest {
     jaugeNaturel jauge1, jauge2, jauge3, jauge4;
 
     @BeforeEach
@@ -15,8 +20,11 @@ class jaugeNaturelTest {
         jauge1 = new jaugeNaturel(1, 100, 100);
         jauge2 = new jaugeNaturel(1, 100, 50);
         jauge3 = new jaugeNaturel(1, 100, 1);
-        jauge4 = new jaugeNaturel(1, 100, 101);
-
+        try {
+            jauge4 = new jaugeNaturel(1, 100, 101);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Tout est normal, l'exception est attendue pour ce cas:" + e);
+        }
     }
 
     @AfterEach
@@ -29,7 +37,6 @@ class jaugeNaturelTest {
         assertTrue(jauge1.estRouge(), "estRouge() devrait renvoyer false");
         assertFalse(jauge2.estRouge(), "estRouge() devrait renvoyer false");
         assertFalse(jauge3.estRouge(), "estRouge() devrait renvoyer false");
-        assertTrue(jauge4.estRouge(), "estRouge() devrait renvoyer true");
 
     }
 
@@ -46,7 +53,7 @@ class jaugeNaturelTest {
         assertFalse(jauge1.estBleu(), "estBleu() devrait renvoyer false");
         assertFalse(jauge2.estBleu(), "estBleu() devrait renvoyer false");
         assertTrue(jauge3.estBleu(), "estBleu() devrait renvoyer true");
-        assertFalse(jauge4.estBleu(), "estBleu() devrait renvoyer false");
+
 
     }
 
@@ -62,11 +69,5 @@ class jaugeNaturelTest {
         assertTrue(jauge1.estRouge(), "estRouge() devrait renvoyer false");
         jauge1.decrementer();
         assertFalse(jauge1.estRouge(), "estRouge() devrait renvoyer false si la valeur est decrementer");
-    }
-
-
-
-    @Test
-    void testToString() {
     }
 }

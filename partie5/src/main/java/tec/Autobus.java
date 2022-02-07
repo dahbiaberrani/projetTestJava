@@ -16,18 +16,18 @@ public class Autobus extends  Bus {
      * nbPlaceAssises: est declarer à la creation de Autobus
      */
 
-    private jaugeNaturel nbPlaceDebout;
-    private jaugeNaturel nbPlaceAssises;
+    private final jaugeNaturel nbPlaceDebout;
+    private final jaugeNaturel nbPlaceAssises;
     private int numeroArret;
-    private List<Passager> passagers;
-    private List<Passager> passagersASuprimmer;
+    private final List<Passager> passagers;
+    private final List<Passager> passagersASuprimmer;
 
     public Autobus(int nAssises ,  int nDebout ) {
         this.nbPlaceDebout = new jaugeNaturel(0,nDebout, 0);
         this.nbPlaceAssises = new jaugeNaturel(0,nAssises, 0);
         this.numeroArret = 0;
-        this.passagers = new ArrayList<Passager>();
-        this.passagersASuprimmer = new ArrayList<Passager>();
+        this.passagers = new ArrayList<>();
+        this.passagersASuprimmer = new ArrayList<>();
     }
     public Autobus(int nbPlace ) {
         this(nbPlace,nbPlace);
@@ -151,6 +151,8 @@ public class Autobus extends  Bus {
                 p.nouvelArret(this, numeroArret);
             } catch (IllegalArgumentException e) {
                 throw new UsagerInvalideException("problème usager invalide");
+            } catch (UsagerInvalideException e) {
+                throw new UsagerInvalideException("problème usager non invalide");
             }
         }
         for (Passager p : passagersASuprimmer) {

@@ -10,14 +10,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class AutobusExceptionTest {
     Autobus a1;
     Passager p1;
     @BeforeEach
     void setUp() throws Exception {
-        this.a1= new Autobus(5,5);
-        this.p1=new PassagerStandard("toto", 2);
+        this.a1 = new Autobus(5,5);
+        this.p1 = new PassagerStandard("toto", 2);
     }
 
     @Test
@@ -25,7 +26,7 @@ public class AutobusExceptionTest {
         p1.accepterPlaceAssise();
         try {
             a1.demanderPlaceAssise(p1);
-            assertTrue(false);
+            fail("Une exception doitnormalment être lancée");
         } catch (IllegalArgumentException e) {
             System.out.println("Etat passager invalide");
         }
@@ -36,7 +37,7 @@ public class AutobusExceptionTest {
         p1.accepterPlaceDebout();
         try {
             a1.demanderPlaceDebout(p1);
-            assertTrue(false);
+            fail("Une exception doit normalment être lancée");
         } catch (IllegalArgumentException e) {
             System.out.println(" Etat passager invalide");
         }
@@ -47,8 +48,9 @@ public class AutobusExceptionTest {
         p1.accepterPlaceDebout();
         try {
             a1.demanderChangerEnDebout(p1);
+            fail("Une exception doit normalment être lancée");
         } catch (IllegalArgumentException e) {
-            System.out.println(" Etat passager invalide");
+            System.out.println(" Etat passager invalide tout est normal l'exception est attendue");
         }
     }
 
@@ -66,9 +68,12 @@ public class AutobusExceptionTest {
     void allerArretSuivant(){
         try {
             p1.nouvelArret(a1,3);
-            assertTrue(false);
+            fail("Une exception doit normalment être lancée");
         } catch (IllegalArgumentException e) {
             System.out.println("numero arret invalide");
+        } catch (UsagerInvalideException e) {
+            System.out.println("Problème de passager invalide" + e);
+            fail("Une exception doit normalment être lancée");
         }
     }
 }

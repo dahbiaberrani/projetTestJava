@@ -16,15 +16,17 @@ public class EtatPassager implements IEtatPassager {
   /**
    * Définit les trois états possible d'un passager dans un transport.
    */
-  public enum Etat {/** passager assis à l'intérieur */  ASSIS, 
-                    /** passager debout à l'intérieur */ DEBOUT,  
-                    /** passager à l'extérieur */        DEHORS};
+  public enum Etat {
+    /** passager assis à l'intérieur */  ASSIS,
+    /** passager debout à l'intérieur */ DEBOUT,
+    /** passager à l'extérieur */        DEHORS
+  }
 
   private Etat monEtat;
 
   /**
    * Construit une instance en précisant l'état du passager.
-   * 
+   *
    * @param e  valeur de l'état.
    */
   public EtatPassager(Etat e) {
@@ -74,8 +76,6 @@ public class EtatPassager implements IEtatPassager {
     return this.monEtat == Etat.ASSIS || this.monEtat == Etat.DEBOUT;
   }
 
-
-
   /**
    * Cette méthode est heritée de la classe {@link Object}.
    * Trés utile pour le débogage, elle permet de fournir une 
@@ -88,8 +88,7 @@ public class EtatPassager implements IEtatPassager {
    */
   @Override
   public String toString() {
-	String s;
-	//if etta ==DEHORS s ="dehors"
+
     return "<" + monEtat + ">";
   }
 }

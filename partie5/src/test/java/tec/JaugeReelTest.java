@@ -1,32 +1,35 @@
+/**
+ * *
+ *
+ * @author Matteo MUNOZ and Dahbia BERRANI
+ */
 package tec;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tec.jaugeDistance;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class jaugeDistanceTest {
-    jaugeDistance jauge1, jauge2, jauge3, jauge4, jauge5,jaugeEgal,jaugeSup,jaugeSupInter;
+class JaugeReelTest{
+    JaugeReel jauge2, jauge3, jauge4, jauge5,jaugeEgal,jaugeSup,jaugeSupInter;
 
     @BeforeEach
     void setUp() {
-        jauge1 = new jaugeDistance(1, 100, 100);
-        jauge2 = new jaugeDistance(1, 100, 50);
-        jauge3 = new jaugeDistance(1, 100, 1);
-        jauge4 = new jaugeDistance(1, 100, 0);
-        jauge5 = new jaugeDistance(50, 25, 30);
-        jaugeEgal = new jaugeDistance(20, 20, 20);
-        jaugeSup = new jaugeDistance(20, 20, 30);
-        jaugeSupInter = new jaugeDistance(1, 40, 41);
+
+        jauge2 = new JaugeReel(1, 100, 50);
+        jauge3 = new JaugeReel(1, 100, 1);
+        jauge4 = new JaugeReel(1, 100, 0);
+        jauge5 = new JaugeReel(50, 25, 30);
+        jaugeEgal = new JaugeReel(20, 20, 20);
+        jaugeSup = new JaugeReel(20, 20, 30);
+        jaugeSupInter = new JaugeReel(1, 40, 41);
 
     }
 
     @AfterEach
     void tearDown() {
-        jauge1 = null;
         jauge2 = null;
         jauge3 = null;
         jauge4 = null;
@@ -67,12 +70,12 @@ class jaugeDistanceTest {
     }
 
     @Test
-    public void testLimiteVigieMaxInferieurVigieMin() {
+    void testLimiteVigieMaxInferieurVigieMin() {
         assertTrue(jauge5.estBleu() && jauge5.estRouge() && !jauge5.estVert(), "La vigie max est inferieure a la vigie min");
     }
 
     @Test
-    public void testMaxEgaleMin(){
+    void testMaxEgaleMin(){
         assertTrue(jaugeSup.estRouge(), "Vigie max égal à vigie min < départ");
         assertTrue(jaugeEgal.estBleu() && jaugeEgal.estRouge(), "Vigie max égal à vigie min égal au départ");
 

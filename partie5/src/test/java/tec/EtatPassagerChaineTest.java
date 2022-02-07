@@ -1,13 +1,16 @@
+/**
+ * *
+ *
+ * @author Matteo MUNOZ and Dahbia BERRANI
+ */
 package tec;
-
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tec.EtatPassagerChaine;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EtatPassagerChaineTest {
     private EtatPassagerChaine passager4, passager5, passager6;
@@ -25,7 +28,6 @@ class EtatPassagerChaineTest {
 
     @Test
     void EstExterieur() {
-
         assertTrue(passager4.estExterieur());
         assertFalse(passager4.estAssis());
         assertFalse(passager4.estDebout());
