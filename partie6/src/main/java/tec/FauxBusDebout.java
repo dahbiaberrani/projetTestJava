@@ -3,6 +3,7 @@
  *
  * @author Dahbia BERRANI and Matteo MUNOZ
  */
+
 package tec;
 
 public class FauxBusDebout {
@@ -16,7 +17,7 @@ public class FauxBusDebout {
     return true;
   }
 
-  void demanderPlaceAssise(Passager p) {
+  void demanderPlaceAssise() {
     message = ":demanderPlaceAssise:";
   }
 
@@ -30,15 +31,12 @@ public class FauxBusDebout {
     p.accepterPlaceDebout();
   }
   
-  void demanderChangerEnAssis(Passager p) {
+  void demanderChangerEnAssis() {
     message = ":demanderChangerEnAssis:";
   }
 
   void demanderSortie(Passager p) {
     message = ":demanderSortie:";    
     p.accepterSortie();
-  }
-
-  public void allerArretSuivant() { //throws UsagerInvalideException {
   }
 }
