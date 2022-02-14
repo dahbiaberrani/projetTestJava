@@ -1,3 +1,9 @@
+/**
+ * *
+ *
+ * @author Dahbia BERRANI and Matteo MUNOZ
+ */
+
 package tec;
 
 public class Sportif extends PassagerAbstrait {
@@ -10,7 +16,11 @@ public class Sportif extends PassagerAbstrait {
         if (b.aPlaceDebout()) {
             b.demanderPlaceDebout(this);
         } else {
-            throw new UsagerInvalideException("Pas de place debout pour un passager lunatique");
+            if (b.aPlaceAssise()) {
+                b.demanderPlaceAssise(this);
+            } else {
+                throw new UsagerInvalideException("Pas de place debout ni assise pour un passager Sportif");
+            }
         }
     }
 }

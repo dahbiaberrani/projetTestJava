@@ -1,3 +1,8 @@
+/**
+ * *
+ *
+ * @author Dahbia BERRANI and Matteo MUNOZ
+ */
 package tec;
 
 public class FauxBusDebout {

@@ -1,5 +1,10 @@
-package tec;
+/**
+ * *
+ *
+ * @author Dahbia BERRANI and Matteo MUNOZ
+ */
 
+package tec;
 
 /**
  * Cette interface définit un des types abstraits fixant les interactions

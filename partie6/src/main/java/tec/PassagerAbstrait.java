@@ -1,10 +1,9 @@
-package tec;
-
 /**
- * class PassagerStandard implement Usager et Passager
+ * *
  *
- * @author Matteo MUNOZ and Dahbia BERRANI
+ * @author Dahbia BERRANI and Matteo MUNOZ
  */
+package tec;
 
 public abstract class PassagerAbstrait extends Passager implements  Usager {
     private final EtatPassager etat;

@@ -1,3 +1,9 @@
+/**
+ * class PassagerStandard implement Usager et Passager
+ *
+ * @author Matteo MUNOZ and Dahbia BERRANI
+ */
+
 package tec;
 
 public class Prudent extends CaractereAbstrait {

@@ -1,3 +1,9 @@
+/**
+ * *
+ *
+ * @author Dahbia BERRANI and Matteo MUNOZ
+ */
+
 package tec;
 
 public class Fatigue extends PassagerAbstrait {
@@ -8,7 +14,7 @@ public class Fatigue extends PassagerAbstrait {
 
     @Override
     public void choixPlaceMontee(Bus b) throws UsagerInvalideException {
-        if (b.aPlaceAssise() && b.aPlaceDebout()) {
+        if (b.aPlaceAssise()) {
             b.demanderPlaceAssise(this);
         } else {
             throw new UsagerInvalideException("Pas de place assise pour un passager stressé");

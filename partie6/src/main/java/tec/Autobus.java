@@ -1,12 +1,12 @@
+/**
+ * *
+ *
+ * @author Dahbia BERRANI and Matteo MUNOZ
+ */
 package tec;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/** class Autobus iplement l'interface Bus
- * un autobus a un nombre déterminer de place assises et debouts et sont fixer à l'instanciation d'un autobus
- * @author Dahbia BERRANI
- */
 
 public class Autobus extends  Bus {
 
@@ -81,7 +81,7 @@ public class Autobus extends  Bus {
 
     @Override
     public void demanderPlaceDebout(Passager p){
-        if(!p.estDehors() || !this.aPlaceDebout()) {
+        if(!p.estDehors()) {
             throw new IllegalArgumentException("le passager n'est pas dehors");
         }
         this.passagers.add(p);

@@ -1,3 +1,9 @@
+/**
+ * *
+ *
+ * @author Dahbia BERRANI and Matteo MUNOZ
+ */
+
 package tec;
 
 abstract class CaractereAbstrait implements CaracterePassager {
