@@ -23,23 +23,24 @@ class Simple {
    * La methodes toString() doit etre redefinie dans les
    * deux classes PassagerStandard et Autobus.
    */
-  static private void deboguerEtat (Transport t, Usager p) {
+  private static void deboguerEtat (Transport t, Usager p) {
     System.out.println(p);
     System.out.println(t);
   }
 
-  static public void main (String[] args) throws UsagerInvalideException {
-    Transport serenity = new Autobus(1, 2);
-
-    Usager kaylee = new PassagerStandard("Kaylee", 5);
+  public static void main (String[] args) throws UsagerInvalideException {
+    Autobus serenity = new Autobus(5, 5);
+    Sportif kaylee = new Sportif("Kaylee", 5, new Calme(new EtatCaractere(serenity)));
 
     serenity.allerArretSuivant();
     // debogue
+    deboguerEtat(serenity, kaylee);
     System.out.println(serenity);
 
-    kaylee.monterDans(serenity);
 
-    Usager jayne = new PassagerStandard("Jayne", 4);
+    kaylee.monterDans(serenity);
+//    kaylee.accepterSortie();
+    Usager jayne = new Fatigue("Jayne", 4, new Nerveux(new EtatCaractere(serenity)));
     jayne.monterDans(serenity);
     serenity.allerArretSuivant();
     // debogue
@@ -47,7 +48,7 @@ class Simple {
     System.out.println(kaylee);
     System.out.println(jayne);
 
-    Usager inara = new PassagerStandard("Inara", 5);
+    Usager inara = new Repos("Inara", 5, new Prudent(new EtatCaractere(serenity)));
     inara.monterDans(serenity);
 
     serenity.allerArretSuivant();

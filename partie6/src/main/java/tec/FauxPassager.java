@@ -1,6 +1,6 @@
 package tec;
 
-class FauxPassager implements Passager {
+class FauxPassager extends Passager {
   static final byte DEHORS = 0;
   static final byte ASSIS  = 1;
   static final byte DEBOUT = 2;

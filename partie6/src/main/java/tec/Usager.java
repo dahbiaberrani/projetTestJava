@@ -21,5 +21,5 @@ public interface Usager {
    * @param t le transport dans lequel désire monter l'usager.
    * @throws UsagerInvalideException si l'état de l'usager est incohérent par rapport à sa demande.
    */
-  public void monterDans(Transport t) throws UsagerInvalideException;
+  void monterDans(Transport t) throws UsagerInvalideException;
 }

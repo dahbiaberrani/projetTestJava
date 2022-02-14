@@ -13,28 +13,18 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public abstract class PassagerAbstraitTest {
-    PassagerStandard mockPassager;
+
     private PassagerAbstrait p;
 
     void setUp(PassagerAbstrait passager_reel) {
         this.p = passager_reel;
-        mockPassager = mock(PassagerStandard.class);
-        when(mockPassager.estAssis()).thenReturn(false);
-        when(mockPassager.estDebout()).thenReturn(false);
-        when(mockPassager.estDehors()).thenReturn(true);
-        when(mockPassager.nom()).thenReturn("le Passager");
+
     }
 
     @AfterEach
     void tearDown() {
     }
 
-    @Test
-    void estDehors() {
-        assertTrue(mockPassager.estDehors());
-        assertFalse(mockPassager.estAssis());
-        assertFalse(mockPassager.estDebout());
-    }
 
     @Test
     void estAssis() {

@@ -6,56 +6,59 @@ package tec;
  * @author Matteo MUNOZ and Dahbia BERRANI
  */
 
-public abstract class PassagerAbstrait implements Passager, Usager {
+public abstract class PassagerAbstrait extends Passager implements  Usager {
     private final EtatPassager etat;
     private final String nom;
     private final int destination;
+    private  CaracterePassager caractere;
 
-    protected PassagerAbstrait(String string, int i) {
+    protected PassagerAbstrait(String string, int i, CaracterePassager caractere) {
         etat = new EtatPassager(EtatPassager.Etat.DEHORS);
         this.nom = string;
         this.destination = i;
+        this.caractere = caractere;
+        this.caractere.getEtatCaractere().setPassagee(this);
     }
 
     @Override
-    public boolean estDehors() {
+    boolean estDehors() {
         return etat.estExterieur();
     }
 
     @Override
-    public boolean estAssis() {
+    boolean estAssis() {
         return etat.estAssis();
     }
 
     @Override
-    public boolean estDebout() {
+    boolean estDebout() {
         return etat.estDebout();
     }
 
     @Override
-    public void accepterSortie() {
+    void accepterSortie() {
         etat.setEtat(EtatPassager.Etat.DEHORS);
     }
 
-    @Override
-    public void accepterPlaceAssise() {
+   @Override
+    void accepterPlaceAssise() {
         etat.setEtat(EtatPassager.Etat.ASSIS);
     }
 
     @Override
-    public void accepterPlaceDebout() {
+    void accepterPlaceDebout() {
         etat.setEtat(EtatPassager.Etat.DEBOUT);
     }
 
     @Override
-    public void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException, UsagerInvalideException {
+    void nouvelArret(Bus bus, int numeroArret) throws IllegalArgumentException, UsagerInvalideException {
         if (this.destination < numeroArret) {
             throw new IllegalArgumentException("Arrêt a dépasser la destination");
         }
-        choixChangerPlace(bus, numeroArret);
+        choixChangerPlace(numeroArret);
     }
 
-    public int getDestination() {
+    int getDestination() {
         return destination;
     }
 
@@ -71,9 +74,11 @@ public abstract class PassagerAbstrait implements Passager, Usager {
         }
     }
 
-    public abstract void choixPlaceMontee(Bus b) throws UsagerInvalideException;
+    abstract void choixPlaceMontee(Bus b) throws UsagerInvalideException;
 
-    public abstract void choixChangerPlace(Bus b, int numeroArret) throws UsagerInvalideException;
+    void choixChangerPlace(int numeroArret) throws UsagerInvalideException {
+        this.caractere.choixChangerPlace(numeroArret);
+    }
 
     @Override
     public String toString() {
